@@ -22,4 +22,3 @@ const html = codeToHtml('console.log("Hello World")', {
   theme: 'none', // [!code hl]
 })
 ```
-
