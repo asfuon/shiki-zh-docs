@@ -7,21 +7,21 @@ import { version } from '../../package.json'
 import vite from './vite.config'
 
 const GUIDES: DefaultTheme.NavItemWithLink[] = [
-  { text: 'Getting Started', link: '/guide/' },
-  { text: 'Installation', link: '/guide/install' },
-  { text: 'Bundles', link: '/guide/bundles' },
-  { text: 'Dual Themes', link: '/guide/dual-themes' },
-  { text: 'Transformers', link: '/guide/transformers' },
-  { text: 'Theme Colors Manipulation', link: '/guide/theme-colors' },
-  { text: 'Migration', link: '/guide/migrate' },
-  { text: 'Compatibility Build', link: '/guide/compat' },
-  { text: 'Custom Themes', link: '/guide/load-theme' },
-  { text: 'Custom Languages', link: '/guide/load-lang' },
+  { text: '快速开始', link: '/guide/' },
+  { text: '安装', link: '/guide/install' },
+  { text: '捆绑包', link: '/guide/bundles' },
+  { text: '双主题', link: '/guide/dual-themes' },
+  { text: '转换器', link: '/guide/transformers' },
+  { text: '主题颜色控制', link: '/guide/theme-colors' },
+  { text: '迁移', link: '/guide/migrate' },
+  { text: '兼容性构建', link: '/guide/compat' },
+  { text: '自定义主题', link: '/guide/load-theme' },
+  { text: '自定义语言', link: '/guide/load-lang' },
 ]
 
 const REFERENCES: DefaultTheme.NavItemWithLink[] = [
-  { text: 'Themes', link: '/themes' },
-  { text: 'Languages', link: '/languages' },
+  { text: '主题', link: '/themes' },
+  { text: '语言', link: '/languages' },
 ]
 
 const INTEGRATIONS: DefaultTheme.NavItemWithLink[] = [
@@ -31,18 +31,18 @@ const INTEGRATIONS: DefaultTheme.NavItemWithLink[] = [
   { text: 'Monaco Editor', link: '/packages/monaco' },
   { text: 'VitePress', link: '/packages/vitepress' },
   { text: 'Astro', link: '/packages/astro' },
-  { text: 'Common Transformers', link: '/packages/transformers' },
+  { text: '常用转换器', link: '/packages/transformers' },
   { text: 'CLI', link: '/packages/cli' },
 ]
 
 const VERSIONS: (DefaultTheme.NavItemWithLink | DefaultTheme.NavItemChildren)[] = [
   { text: `v${version} (current)`, link: '/' },
-  { text: `Release Notes`, link: 'https://github.com/shikijs/shiki/releases' },
-  { text: `Contributing`, link: 'https://github.com/shikijs/shiki/blob/main/CONTRIBUTING.md' },
+  { text: `发布日志`, link: 'https://github.com/shikijs/shiki/releases' },
+  { text: `贡献`, link: 'https://github.com/shikijs/shiki/blob/main/CONTRIBUTING.md' },
   {
     items: [
-      { text: 'Migration from v0.14', link: '/guide/migrate#migrate-from-v0-14' },
-      { text: 'Migration from Shikiji', link: '/guide/migrate#migrate-from-shikiji' },
+      { text: '从 v0.14 迁移', link: '/guide/migrate#migrate-from-v0-14' },
+      { text: '从 Shikiji 迁移', link: '/guide/migrate#migrate-from-shikiji' },
     ],
   },
 ]
@@ -50,7 +50,7 @@ const VERSIONS: (DefaultTheme.NavItemWithLink | DefaultTheme.NavItemChildren)[] 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Shiki',
-  description: 'A beautiful and powerful syntax highlighter',
+  description: '语法高亮显示器 Shiki 非官方中文文档',
   markdown: {
     theme: {
       light: 'vitesse-light',
@@ -117,7 +117,7 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       {
-        text: 'Guide',
+        text: '指南',
         items: [
           {
             items: GUIDES,
@@ -125,11 +125,11 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Integrations',
+        text: '集成',
         items: INTEGRATIONS,
       },
       {
-        text: 'References',
+        text: '参考',
         items: REFERENCES,
       },
       // {
@@ -147,15 +147,15 @@ export default defineConfig({
       {
         '/': [
           {
-            text: 'Guide',
+            text: '指南',
             items: GUIDES,
           },
           {
-            text: 'Integrations',
+            text: '集成',
             items: INTEGRATIONS,
           },
           {
-            text: 'References',
+            text: '参考',
             items: REFERENCES,
           },
         ],
@@ -163,11 +163,28 @@ export default defineConfig({
     ),
 
     editLink: {
-      pattern: 'https://github.com/shikijs/shiki/edit/main/docs/:path',
-      text: 'Suggest changes to this page',
+      pattern: 'https://github.com/ifshizuku/shiki-zh-docs/edit/main/docs/:path',
+      text: '在 GitHub 上编辑本页',
     },
     search: {
       provider: 'local',
+      options: {
+        translations: {
+          button: {
+            buttonText: '搜索文档',
+            buttonAriaLabel: '搜索文档',
+          },
+          modal: {
+            noResultsText: '无法找到相关结果',
+            resetButtonTitle: '清除查询条件',
+            footer: {
+              selectText: '选择',
+              navigateText: '切换',
+              closeText: '关闭',
+            },
+          },
+        },
+      },
     },
 
     socialLinks: [
@@ -175,9 +192,25 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2021 Pine Wu, 2023-PRESENT Anthony Fu.',
+      message: '以 MIT 许可证发布',
+      copyright: '版权所有 © 2021 Pine Wu，2023-现在 Anthony Fu',
     },
+
+    docFooter: {
+      prev: '上一页',
+      next: '下一页',
+    },
+
+    outline: {
+      label: '目录',
+    },
+
+    langMenuLabel: '多语言',
+    returnToTopLabel: '回到顶部',
+    sidebarMenuLabel: '菜单',
+    darkModeSwitchLabel: '主题',
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
   },
 
   head: [
@@ -186,7 +219,7 @@ export default defineConfig({
     ['meta', { name: 'author', content: 'Pine Wu, Anthony Fu' }],
     ['meta', { property: 'og:title', content: 'Shiki' }],
     ['meta', { property: 'og:image', content: 'https://shiki.style/og.png' }],
-    ['meta', { property: 'og:description', content: 'A beautiful yet powerful syntax highlighter' }],
+    ['meta', { property: 'og:description', content: '语法高亮显示器 Shiki 非官方中文文档' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:image', content: 'https://shiki.style/og.png' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover' }],

@@ -2,15 +2,15 @@
 outline: deep
 ---
 
-# Compatibility Build
+# 兼容性构建
 
-To make deep migration easier, we provide a compatibility build that shimmed the breaking changes from v0.x. You can use it as a drop-in replacement for `shiki` and migrate step by step.
+为了让深度迁移更容易，我们提供了一个兼容版本，对相对于 v0.x 版本中的破坏性更改进行了修整。你可以用它来替代 `shiki` 并逐步迁移。
 
-## Installations
+## 安装
 
 <Badges name="@shikijs/compat" />
 
-Set the alias to `shiki` in your `package.json`:
+在 `package.json` 中为 `shiki` 设置别名：
 
 <!-- eslint-skip -->
 
@@ -23,4 +23,4 @@ Set the alias to `shiki` in your `package.json`:
 }
 ```
 
-Check the [breaking changes list](/guide/migrate#migrate-from-v0-14) to see if you need to migrate anything manually.
+你也可以查看 [破坏性改动列表](/guide/migrate#migrate-from-v0-14) 以助于你手动迁移这些更改。

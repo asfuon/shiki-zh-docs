@@ -2,38 +2,38 @@
 outline: deep
 ---
 
-# Migration
+# 迁移
 
-The v1.0 release of Shiki is a major rewrite that we took the chance to revise every design decision we made in the past. We originally had a separate package name as [Shikiji](https://github.com/antfu/shikiji) to experiment with the new design, now it's merged back to Shiki as v1.0.
+Shiki 的 v1.0 版本是一次重大重写，我们借此机会修改了过去的所有设计决定。我们原本有一个独立的软件包名称 [Shikiji](https://github.com/antfu/shikiji)，用来试验新的设计，现在合并回 Shiki，成为 v1.0。
 
-## Migrate from v0.14
+## 从 v0.14 迁移
 
-Compare to [`shiki@0.14.3`](https://github.com/shikijs/shiki/releases/tag/v0.14.3), the list of breaking changes are:
+与 [`shiki@0.14.3`](https://github.com/shikijs/shiki/releases/tag/v0.14.3) 相比，破坏性更改列表内容如下：
 
-### Hard Breaking Changes
+### 硬性破坏性改动
 
-Breaking changes that you need to migrate manually:
+你必须手动迁移的破坏性改动：
 
-- CJS and IIFE builds are dropped. See [CJS Usage](/guide/install#cjs-usage) and [CDN Usage](/guide/install#cdn-usage) for more details.
-- `codeToHtml` uses [`hast`](https://github.com/syntax-tree/hast) internally. The generated HTML will be a bit different but should behave the same.
-- `css-variables` theme is no longer supported. Use the [dual themes](/guide/dual-themes) approach instead, or learn more at the [Theme Colors Manipulation](/guide/theme-colors) page.
+- CJS 和 IIFE 构建被移除。查看 [使用 CJS](/guide/install#cjs-usage) 和 [使用 CDN](/guide/install#cdn-usage) 获取更多详细信息。
+- `codeToHtml` 在内部使用了 [`hast`](https://github.com/syntax-tree/hast)。 生成的 HTML 会略有不同，但行为一致。
+- 不支持 `css-variables` 主题。请使用 [双主题](/guide/dual-themes)，或在 [主题颜色控制](/guide/theme-colors) 查看更多。
 
-### Soft Breaking Changes
+### 软性破坏性改动
 
-Breaking changes applies to main package `shiki`, but are shimmed by the [compatible build `@shikijs/compat`](/guide/compat#compatibility-build):
+`shiki` 包中包含的破坏性改动，而 [兼容构建 `@shikijs/compat`](/guide/compat#compatibility-build) 中不具备（屏蔽）:
 
-- Top-level named exports `setCDN`, `loadLanguage`, `loadTheme`, `setWasm` are dropped as they are not needed anymore.
-- `BUNDLED_LANGUAGES`, `BUNDLED_THEMES` are moved to `shiki/langs` and `shiki/themes` and renamed to `bundledLanguages` and `bundledThemes` respectively.
-- `theme` option for `getHighlighter` is dropped, use `themes` with an array instead.
-- Highlighter does not maintain an internal default theme context. `theme` option is required for `codeToHtml` and `codeToThemedTokens`.
-- `codeToThemedTokens` sets `includeExplanation` to `false` by default.
-- `.ansiToHtml` is merged into `.codeToHtml` as a special language, `ansi`. Use `.codeToHtml(code, { lang: 'ansi' })` instead.
-- `lineOptions` is dropped in favor of the fully customizable `transforms` option.
-- `LanguageRegistration`'s `grammar` field is flattened to `LanguageRegistration` itself, refer to the types for more details.
+- 顶级命名导出项 `setCDN`、`loadLanguage`、`loadTheme` 和 `setWasm` 被移除，因为其不再被需要。
+- `BUNDLED_LANGUAGES`、`BUNDLED_THEMES` 被移动至 `shikiji/langs` 和 `shikiji/themes` 中并分别更名为 `bundledLanguages` 和 `bundledThemes`。
+- `getHighlighter` 的 `theme` 选项被移除，请改用数组形式的 `themes`。
+- 高亮显示器不再具有内部的默认主题上下文。 对于 `codeToHtml` 和 `codeToThemedTokens`，`theme` 选项是必须的。
+- `codeToThemedTokens` 默认情况下将 `includeExplanation` 设置为 `false`。
+- `.ansiToHtml` 作为一个特殊的语言 `ansi` 被合并至 `.codeToHtml`。请使用 `.codeToHtml(code, { lang: 'ansi' })`。
+- `lineOptions` 被移除，取而代之的是完全可定制的 `transforms` 选项。
+- `LanguageRegistration` 的 `grammar` 字段被展开到 `LanguageRegistration` 本身，参考类型定义获取详细信息。
 
-## Migrate from Shikiji
+## 从 Shikiji 迁移
 
-If you are already using [Shikiji](https://github.com/antfu/shikiji), first make sure you are on the latest minor v0.10. Then the migration should be very straightforward by renaming the packages:
+如果你已经在使用 [Shikiji](https://github.com/antfu/shikiji)，请确保你使用的是最新的次版本 v0.10。然后重新命名软件包，这个迁移的过程应该会非常简单：
 
 - `shikiji` -> `shiki`
 - `shikiji-core` -> `@shikijs/core`
@@ -41,5 +41,5 @@ If you are already using [Shikiji](https://github.com/antfu/shikiji), first make
 - `shikiji-transformers` -> `@shikijs/transformers`
 - `shikiji-monaco` -> `@shikijs/monaco`
 - `shikiji-cli` -> `@shikijs/cli`
-- `markdown-it-shiki` -> `@shikijs/markdown-it`
-- `rehype-shiki` -> `@shikijs/rehype`
+- `markdown-it-shikiji` -> `@shikijs/markdown-it`
+- `rehype-shikiji` -> `@shikijs/rehype`

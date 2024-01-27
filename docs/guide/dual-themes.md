@@ -2,11 +2,11 @@
 outline: deep
 ---
 
-# Light/Dark Dual Themes
+# 浅色与深色双主题
 
-Shiki supports outputting light/dark dual or multiple themes. Shiki's dual themes approach uses CSS variables to store the colors on each token.
+Shiki 支持输出浅色和深色双主题。与 [markdown-it-shiki](https://github.com/antfu/markdown-it-shiki#dark-mode) 将代码渲染两次的实现不同，Shiki 的多主题实现使用 CSS 变量来存储每个标签上的颜色。这样做在性能上更高效，并且包更小。
 
-Change the `theme` option in `codeToHtml` to `options` with `light` and `dark` keys to generate two themes.
+将 `codeToHtml` 上的 `theme` 选项改为含 `light` 和 `dark` 两键的 `options` 来生成两个主题。
 
 ```ts twoslash
 import { codeToHtml } from 'shiki'
@@ -20,7 +20,7 @@ const code = await codeToHtml('console.log("hello")', {
 })
 ```
 
-The following HTML will be generated ([demo preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/shikijs/shiki/main/packages/shiki/test/out/dual-themes.html)):
+这会生成以下 HTML（[示例预览](https://htmlpreview.github.io/?https://raw.githubusercontent.com/shikijs/shiki/main/packages/shiki/test/out/dual-themes.html)）：
 
 ```html
 <pre
@@ -43,9 +43,9 @@ The following HTML will be generated ([demo preview](https://htmlpreview.github.
 </pre>
 ```
 
-To make it reactive to your site's theme, you need to add a short CSS snippet:
+为了使它们响应你的网站样式，需要加入一些 CSS 片段：
 
-## Query-based Dark Mode
+## 基于媒体查询的深色模式
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -53,7 +53,7 @@ To make it reactive to your site's theme, you need to add a short CSS snippet:
   .shiki span {
     color: var(--shiki-dark) !important;
     background-color: var(--shiki-dark-bg) !important;
-    /* Optional, if you also want font styles */
+    /* 可选，用于定义字体样式 */
     font-style: var(--shiki-dark-font-style) !important;
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
@@ -61,23 +61,23 @@ To make it reactive to your site's theme, you need to add a short CSS snippet:
 }
 ```
 
-## Class-based Dark Mode
+## 基于类名的深色模式
 
 ```css
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;
   background-color: var(--shiki-dark-bg) !important;
-  /* Optional, if you also want font styles */
+  /* 可选，用于定义字体样式 */
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 ```
 
-## Multiple Themes
+## 多主题
 
-It's also possible to support more than two themes. In the `themes` object, you can have an arbitrary number of themes, and specify the default theme with `defaultColor` option.
+还支持超过两个主题。在 `theme` 对象中，你可以创建任意数量的主题，并使用 `defaultColor` 选项指定默认主题。
 
 ```ts twoslash
 import { codeToHtml } from 'shiki'
@@ -88,28 +88,28 @@ const code = await codeToHtml('console.log("hello")', {
     light: 'github-light',
     dark: 'github-dark',
     dim: 'github-dimmed',
-    // any number of themes
+    // 任意数量的主题
   },
 
-  // optional customizations
+  // 可选的自定义选项
   defaultColor: 'light',
   cssVariablePrefix: '--shiki-'
 })
 ```
 
-A token would be generated like:
+标签会以类似如下的形式生成：
 
 ```html
 <span style="color:#1976D2;--shiki-dark:#D8DEE9;--shiki-dim:#566575">console</span>
 ```
 
-Then update your CSS snippet to control when each theme takes effect. Here is an example:
+然后修改你的 CSS 代码片段以控制每个主题何时生效。这是一个示例：
 
-[Demo preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/shikijs/shiki/main/packages/shiki/test/out/multiple-themes.html)
+[示例预览](https://htmlpreview.github.io/?https://raw.githubusercontent.com/shikijs/shiki/main/packages/shiki/test/out/multiple-themes.html)
 
-### Without Default Color
+### 不使用默认颜色
 
-If you want to take full control of the colors or avoid using `!important` to override, you can optionally disable the default color by setting `defaultColor` to `false`.
+如果你想完全控制颜色或避免使用 `!important` 进行覆盖，可以通过将 `defaultColor` 设置为 `false` 来禁用默认颜色。
 
 ```ts twoslash
 import { codeToHtml } from 'shiki'
@@ -124,12 +124,12 @@ const code = await codeToHtml('console.log("hello")', {
 })
 ```
 
-With it, a token would be generated like:
+此时，标签会以类似如下的形式生成：
 
 ```html
 <span style="--shiki-dark:#D8DEE9;--shiki-light:#2E3440">console</span>
 ```
 
-In that case, the generated HTML would have no style out of the box, you need to add your own CSS to control the colors.
+在这种情况下，生成的 HTML 将没有默认样式，你需要添加自己的 CSS 来控制颜色。
 
-It's also possible to control the theme in CSS variables. For more, refer to the great research and examples by [@mayank99](https://github.com/mayank99) in [this issue #6](https://github.com/shikijs/shiki/issues/6).
+还可以通过 CSS 变量来控制主题。对此，你可以参考 [@mayank99](https://github.com/mayank99) 在 [这个议题 #6](https://github.com/antfu/shikiji/issues/6) 中优秀的研究和示例。

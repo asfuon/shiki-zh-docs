@@ -1,20 +1,20 @@
-# Languages
+# 语言
 
-## Bundled Languages
+## 捆绑的语言
 
-Language grammars listed below are re-distributed via [`tm-grammars`](https://github.com/shikijs/textmate-grammars-themes/tree/main/packages/tm-grammars) into the `shiki` package.
+以下列出的语言语法是通过 [`tm-grammars`](https://github.com/antfu/textmate-grammars-themes/tree/main/packages/tm-grammars) 重新分发到 `shiki` 包的。
 
 <LanguagesList />
 
-Grammars are covered by their repositories’ respective licenses, which are permissive (apache-2.0, mit, etc), and made available in [this NOTICE](https://github.com/shikijs/textmate-grammars-themes/blob/main/packages/tm-grammars/NOTICE).
+这些语法支持的许可证由其代码库覆盖，它们的许可证是宽松的（Apache-2.0、MIT 等），你可以在 [此通知](https://github.com/antfu/textmate-grammars-themes/blob/main/packages/tm-grammars/NOTICE) 中查看。
 
-For loading your custom languages, please reference to [this guide](/guide/load-lang).
+如果你要加载自定义语言，请参考 [这个指南](/guide/load-lang)。
 
-## Special Languages
+## 特殊的语言
 
-### Plain Text
+### 纯文本
 
-You can set lang to `text` to bypass highlighting. This is useful as the fallback when you receive user specified language that are not available. For example:
+你可以将语言设置为 `text`，以绕过高亮显示。这可以作为处理用户指定了不可用语言时的回滚效果，例如：
 
 ```txt
 import { codeToHtml } from 'shiki'
@@ -25,11 +25,11 @@ const html = codeToHtml('console.log("Hello World")', {
 })
 ```
 
-`txt`, `plain` are provided as aliases to `text` as well.
+`txt` 和 `plain` 可以作为 `text` 的别名使用。
 
 ### ANSI
 
-A special processed language `ansi` is provided to highlight terminal outputs. For example:
+特殊的处理语言 `ansi` 可以用来突出显示终端输出。例如：
 
 ```ansi
 [0;90m┌[0m  [0;36;1mWelcome to VitePress![0m[0m
@@ -50,4 +50,4 @@ A special processed language `ansi` is provided to highlight terminal outputs. F
 [0;36m└[0m
 ```
 
-Check the [raw markdown of code snippet above](https://github.com/shikijs/shiki/blob/main/docs/languages.md?plain=1#L35).
+查看 [上述代码片段的原始 Markdown](https://github.com/shikijs/shiki/blob/main/docs/languages.md?plain=1#L35)。
