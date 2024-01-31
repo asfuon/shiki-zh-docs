@@ -26,7 +26,7 @@ const REFERENCES: DefaultTheme.NavItemWithLink[] = [
 
 const INTEGRATIONS: DefaultTheme.NavItemWithLink[] = [
   { text: 'TypeScript Twoslash', link: '/packages/twoslash' },
-  { text: 'Markdown It', link: '/packages/markdown-it' },
+  { text: 'markdown-it', link: '/packages/markdown-it' },
   { text: 'Rehype', link: '/packages/rehype' },
   { text: 'Monaco Editor', link: '/packages/monaco' },
   { text: 'VitePress', link: '/packages/vitepress' },
@@ -50,7 +50,7 @@ const VERSIONS: (DefaultTheme.NavItemWithLink | DefaultTheme.NavItemChildren)[] 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Shiki',
-  description: '语法高亮显示器 Shiki 非官方中文文档',
+  description: '语法高亮器 Shiki 非官方中文文档',
   markdown: {
     theme: {
       light: 'vitesse-light',
@@ -219,7 +219,7 @@ export default defineConfig({
     ['meta', { name: 'author', content: 'Pine Wu, Anthony Fu' }],
     ['meta', { property: 'og:title', content: 'Shiki' }],
     ['meta', { property: 'og:image', content: 'https://shiki.style/og.png' }],
-    ['meta', { property: 'og:description', content: '语法高亮显示器 Shiki 非官方中文文档' }],
+    ['meta', { property: 'og:description', content: '语法高亮器 Shiki 非官方中文文档' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:image', content: 'https://shiki.style/og.png' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover' }],

@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "Shiki 式 "
-  text: "语法高亮显示器"
-  tagline: 美观而强大的语法高亮显示器
+  text: "语法高亮器"
+  tagline: 美观而强大的语法高亮器
   image:
     src: /logo.svg
     alt: Shiki Logo

@@ -31,7 +31,7 @@ bun add -D shiki
 
 我们也提供了一些集成：
 
-- [Markdown It 插件](/packages/markdown-it)
+- [markdown-it 插件](/packages/markdown-it)
 - [Rehype 插件](/packages/rehype)
 - [TypeScript Twoslash 插件](/packages/twoslash)
 - [Monaco Editor 语法高亮](/packages/monaco)

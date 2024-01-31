@@ -2,7 +2,7 @@
 
 <Badges name="@shikijs/markdown-it" />
 
-适用于 [Markdown It](https://markdown-it.github.io/) 的 Shiki 插件。
+适用于 [markdown-it](https://markdown-it.github.io/) 的 Shiki 插件。
 
 ## 安装
 

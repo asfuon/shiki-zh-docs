@@ -6,7 +6,7 @@ outline: deep
 
 <br>
 
-<span text-brand-yellow text-xl>Shiki</span><span op75>（式，一个日文词汇，意为 [“样式”](https://jisho.org/word/%E5%BC%8F)）</span> 是一款美观而强大的语法高亮显示器，它基于 TextMate 语法及主题，与 VS Code 的语法高亮引擎相同。它能为几乎所有主流编程语言提供非常准确且快速的语法高亮显示。
+<span text-brand-yellow text-xl>Shiki</span><span op75>（式，一个日文词汇，意为 [“样式”](https://jisho.org/word/%E5%BC%8F)）</span> 是一款美观而强大的语法高亮器，它基于 TextMate 语法及主题，与 VS Code 的语法高亮引擎相同。它能为几乎所有主流编程语言提供非常准确且快速的语法高亮显示。
 
 没有需要维护的自定义正则表达式，没有需要维护的自定义 CSS，也没有需要维护的自定义 HTML；你在 VS Code 中使用的主题一样可以用在 Shiki 上。
 

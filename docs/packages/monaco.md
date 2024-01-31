@@ -19,7 +19,7 @@ import { getHighlighter } from 'shiki'
 import { shikiToMonaco } from '@shikijs/monaco'
 import * as monaco from 'monaco-editor-core'
 
-// 创建一个可复用的语法高亮显示器
+// 创建一个可复用的语法高亮器
 const highlighter = await getHighlighter({
   themes: [
     'vitesse-dark',
