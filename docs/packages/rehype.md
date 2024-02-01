@@ -40,7 +40,7 @@ const file = await unified()
 
 ## 细粒度捆绑
 
-在默认情况下，会导入完整的 `shiki` 捆绑包。如果你使用了 [细粒度捆绑](/guide/install#细粒度捆绑)，你可以从 `@shikijs/rehype/core` 中导入 `rehypeShikiFromHighlighter` 并传入你自己的高亮显示器：
+在默认情况下，会导入完整的 `shiki` 捆绑包。如果你使用了 [细粒度捆绑](/guide/install#细粒度捆绑)，你可以从 `@shikijs/rehype/core` 中导入 `rehypeShikiFromHighlighter` 并传入你自己的高亮器：
 
 ```ts twoslash
 // @noErrors: true

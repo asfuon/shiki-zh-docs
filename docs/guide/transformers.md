@@ -5,7 +5,7 @@ Shiki 使用了 [`hast`](https://github.com/syntax-tree/hast)，一种用于 HTM
 你可以使用自己的 `transformers` 操作修改 hast 树来自定义生成的 HTML。你可以传递自定义函数来修改不同类型节点的树。例如：
 
 ```ts twoslash
-import { addClassToHast, codeToHtml } from 'shiki'
+import { codeToHtml } from 'shiki'
 
 const code = await codeToHtml('foo\bar', {
   lang: 'js',
@@ -13,12 +13,12 @@ const code = await codeToHtml('foo\bar', {
   transformers: [
     {
       code(node) {
-        addClassToHast(node, 'language-js')
+        this.addClassToHast(node, 'language-js')
       },
       line(node, line) {
         node.properties['data-line'] = line
         if ([1, 3, 4].includes(line))
-          addClassToHast(node, 'highlight')
+          this.addClassToHast(node, 'highlight')
       },
       span(node, line, col) {
         node.properties['data-token'] = `token:${line}:${col}`

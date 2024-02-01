@@ -25,8 +25,9 @@ Shiki 的 v1.0 版本是一次重大重写，我们借此机会修改了过去�
 - 顶级命名导出项 `setCDN`、`loadLanguage`、`loadTheme` 和 `setWasm` 被移除，因为其不再被需要。
 - `BUNDLED_LANGUAGES`、`BUNDLED_THEMES` 被移动至 `shikiji/langs` 和 `shikiji/themes` 中并分别更名为 `bundledLanguages` 和 `bundledThemes`。
 - `getHighlighter` 的 `theme` 选项被移除，请改用数组形式的 `themes`。
-- 高亮显示器不再具有内部的默认主题上下文。 对于 `codeToHtml` 和 `codeToThemedTokens`，`theme` 选项是必须的。
-- `codeToThemedTokens` 默认情况下将 `includeExplanation` 设置为 `false`。
+- 高亮器不再具有内部的默认主题上下文。 对于 `codeToHtml` 和 `codeToThemedTokens`，`theme` 选项是必须的。
+- `codeToThemedTokens` 更名为 `codeToTokensBase`，并添加了一个更高级的 `codeToTokens`。
+- `codeToTokens` 默认情况下将 `includeExplanation` 设置为 `false`。
 - `.ansiToHtml` 作为一个特殊的语言 `ansi` 被合并至 `.codeToHtml`。请使用 `.codeToHtml(code, { lang: 'ansi' })`。
 - `lineOptions` 被移除，取而代之的是完全可定制的 `transforms` 选项。
 - `LanguageRegistration` 的 `grammar` 字段被展开到 `LanguageRegistration` 本身，参考类型定义获取详细信息。
