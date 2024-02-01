@@ -50,6 +50,7 @@ const VERSIONS: (DefaultTheme.NavItemWithLink | DefaultTheme.NavItemChildren)[] 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Shiki',
+  lang: 'zh-CN',
   description: '语法高亮器 Shiki 非官方中文文档',
   markdown: {
     theme: {
@@ -211,6 +212,16 @@ export default defineConfig({
     darkModeSwitchLabel: '主题',
     lightModeSwitchTitle: '切换到浅色模式',
     darkModeSwitchTitle: '切换到深色模式',
+  },
+
+  locales: {
+    root: {
+      label: '简体中文（社区）',
+    },
+    en: {
+      label: 'English',
+      link: 'https://shiki.style',
+    },
   },
 
   head: [
