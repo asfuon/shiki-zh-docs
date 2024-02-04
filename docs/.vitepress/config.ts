@@ -1,6 +1,9 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import { bundledThemes } from 'shiki'
+
+// @ts-expect-error missing types
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import { transformerMetaWordHighlight, transformerNotationWordHighlight } from '@shikijs/transformers'
 import { defaultHoverInfoProcessor, transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import { version } from '../../package.json'
@@ -11,6 +14,7 @@ const GUIDES: DefaultTheme.NavItemWithLink[] = [
   { text: '安装', link: '/guide/install' },
   { text: '捆绑包', link: '/guide/bundles' },
   { text: '双主题', link: '/guide/dual-themes' },
+  { text: '代码装饰', link: '/guide/decorations' },
   { text: '转换器', link: '/guide/transformers' },
   { text: '主题颜色控制', link: '/guide/theme-colors' },
   { text: '迁移', link: '/guide/migrate' },
@@ -48,7 +52,7 @@ const VERSIONS: (DefaultTheme.NavItemWithLink | DefaultTheme.NavItemChildren)[] 
 ]
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: 'Shiki',
   lang: 'zh-CN',
   description: '语法高亮器 Shiki 非官方中文文档',
@@ -57,10 +61,8 @@ export default defineConfig({
       light: 'vitesse-light',
       dark: 'vitesse-dark',
     },
-    async shikijiSetup(shiki) {
-      await Promise.all(Object.keys(bundledThemes).map(async (theme) => {
-        await shiki.loadTheme(theme as any)
-      }))
+    async shikiSetup(shiki) {
+      await shiki.loadTheme(...Object.keys(bundledThemes) as any)
     },
     codeTransformers: [
       transformerMetaWordHighlight(),
@@ -91,6 +93,18 @@ export default defineConfig({
           else {
             throw new Error(`Only 1 or 2 themes are supported, got ${themes.length}`)
           }
+          return code
+        },
+      },
+      {
+        name: 'shiki:inline-decorations',
+        preprocess(code, options) {
+          const reg = /^\/\/ @decorations:(.*?)\n/
+          code = code.replace(reg, (match, decorations) => {
+            options.decorations ||= []
+            options.decorations.push(...JSON.parse(decorations))
+            return ''
+          })
           return code
         },
       },
@@ -235,4 +249,4 @@ export default defineConfig({
     ['meta', { name: 'twitter:image', content: 'https://shiki.style/og.png' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover' }],
   ],
-})
+}))

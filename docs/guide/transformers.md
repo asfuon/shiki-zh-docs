@@ -30,81 +30,26 @@ const code = await codeToHtml('foo\bar', {
 
 我们也提供了一些常用转换器供你使用，查看 [`shiki-transforms`](/packages/transformers) 获取更多信息。
 
-## `codeToHast`
+## 转换器钩子
 
-你可以使用 `codeToHast` 方法，通过 `hast` 进行自定义渲染，而无需将其序列化为 HTML 代码。你还可以进一步将 AST 与 [unified](https://github.com/unifiedjs) 生态系统集成。
-
-```ts twoslash
-import { getHighlighter } from 'shiki'
-
-const highlighter = await getHighlighter({
-  themes: ['nord', 'min-light'],
-  langs: ['javascript'],
-})
-// ---cut---
-const root = highlighter.codeToHast(
-  'const a = 1',
-  { lang: 'javascript', theme: 'nord' }
-)
-
-console.log(root)
+```mermaid
+flowchart LR
+  preprocess --> tokens
+  tokens --> span
+  span --> span
+  span --> line
+  line --> span
+  line --> code
+  code --> pre
+  pre --> root
+  root --> postprocess
 ```
 
-<!-- eslint-skip -->
-
-```ts
-{
-  type: 'root',
-  children: [
-    {
-      type: 'element',
-      tagName: 'pre',
-      properties: {
-        class: 'shiki vitesse-light',
-        style: 'background-color:#ffffff;color:#393a34',
-        tabindex: '0'
-      },
-      children: [
-        {
-          type: 'element',
-          tagName: 'code',
-          properties: {},
-          children: [
-            {
-              type: 'element',
-              tagName: 'span',
-              properties: { class: 'line' },
-              children: [
-                {
-                  type: 'element',
-                  tagName: 'span',
-                  properties: { style: 'color:#AB5959' },
-                  children: [ { type: 'text', value: 'const' } ]
-                },
-                {
-                  type: 'element',
-                  tagName: 'span',
-                  properties: { style: 'color:#B07D48' },
-                  children: [ { type: 'text', value: ' a' } ]
-                },
-                {
-                  type: 'element',
-                  tagName: 'span',
-                  properties: { style: 'color:#999999' },
-                  children: [ { type: 'text', value: ' =' } ]
-                },
-                {
-                  type: 'element',
-                  tagName: 'span',
-                  properties: { style: 'color:#2F798A' },
-                  children: [ { type: 'text', value: ' 1' } ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
+- `preprocess` - 在代码标签化之前调用，你可以使用它在代码转为标签之前修改代码。
+- `tokens` - 在代码标签化之后调用，你可以使用它来修改标签。
+- `span` - 对每个 `<span>` 标签及每个标记都调用。
+- `line` - 对每行 `<span>` 标签调用。
+- `code` - 对每个 `<code>` 标签调用，这包裹了所有的行。
+- `pre` - 对每个 `<pre>` 标签调用，并将其包裹在 `<code> `标签中。
+- `root` - HAST 树的根，通常情况下只有 `<pre>` 一个子标签。
+- `postprocess` - 在 HTML 生成后调用，可以用来修改最终输出。在 `codeToHast` 中不会被调用。

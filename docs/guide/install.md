@@ -44,7 +44,7 @@ bun add -D shiki
 
 使用 `shiki` 的最快方式是使用我们提供的简写函数。它会根据需求加载必要的主题和语言，并自动将其缓存到内存中。
 
-将你的代码片段传给 `codeToHtml` 函数并指定 `lang` 和 `theme`，它将返回一个带有高亮显示的 HTML 字符串，你可以将其嵌入到页面中。生成的 HTML 中，每个标记都有相应的内联样式，因此你不需要额外的 CSS 来进行样式设置。
+将你的代码片段传给 `codeToHtml` 函数并指定 `lang` 和 `theme`，它将返回一个带有高亮显示的 HTML 字符串，你可以将其嵌入到页面中。生成的 HTML 中，每个标签都有相应的内联样式，因此你不需要额外的 CSS 来进行样式设置。
 
 ```ts twoslash
 import { codeToHtml } from 'shiki'
