@@ -14,15 +14,16 @@ outline: deep
 
 ## 功能
 
-- 所有语法 / 主题 / WASM 都以纯 ESM 的形式提供，不再需要 [CDN](https://github.com/shikijs/shiki#specify-a-custom-root-directory)，也没有其他 [资产](https://github.com/shikijs/shiki#specify-how-to-load-webassembly)
+- 所有语法 / 主题 / WASM 都以纯 ESM 的形式提供，按需懒加载且对捆绑器友好
 - 通用便携，不依赖于 Node.js API 和文件系统，可以在任何现代 JavaScript 运行时上运行
 - 默认仅支持 ESM，不过你依然可以 [使用 CDN](/guide/install#cdn-usage) 或 [使用 CJS](/guide/install#cjs-usage)
 - [语言与主题的细粒度捆绑](/guide/install#fine-grained-bundle)
 - [浅色与深色主题支持](/guide/dual-themes)
-- [基于 AST 的转换器插件](/guide/transformers)
 - [`hast` 支持](/guide/transformers#codetohast)
-- [TypeScript Twoslash](/packages/twoslash)
-- [Shiki 兼容构建](/guide/compat)
+- [转换器 API](/guide/transformers)
+- [代码装饰 API](/guide/decorations)
+- [TypeScript Twoslash 集成](/packages/twoslash)
+- [兼容构建](/guide/compat)
 
 ## 演练场
 

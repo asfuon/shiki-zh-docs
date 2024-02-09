@@ -246,9 +246,9 @@ async function main() {
 
   <script type="module">
     // 指定确切的版本号
-    import { codeToHtml } from 'https://esm.sh/shiki@0.8.0'
+    import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
     // 或
-    // import { codeToHtml } from 'https://esm.run/shiki@0.8.0'
+    // import { codeToHtml } from 'https://esm.run/shiki@1.0.0'
 
     const foo = document.getElementById('foo')
     foo.innerHTML = await codeToHtml('console.log("Hi, Shiki on CDN :)")', {
@@ -261,7 +261,7 @@ async function main() {
 
 这非常高效，因为它只会按需加载语言和主题。对于上面的代码片段，只会发出四个请求（`shiki`、`shiki/themes/vitesse-light.mjs`、`shiki/langs/javascript.mjs` 和 `shiki/wasm.mjs`），共计传输约 200KB 的数据。
 
-[示例](https://jsfiddle.net/rdasqhxu/1/)
+[示例](https://jsfiddle.net/t7brz23v/)
 
 ### Cloudflare Workers
 
