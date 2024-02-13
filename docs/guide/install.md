@@ -118,7 +118,10 @@ await highlighter.loadLanguage('css')
 ```ts theme:slack-dark twoslash
 import { getHighlighter } from 'shiki'
 
-const highlighter = await getHighlighter({ /* ... */ })
+const highlighter = await getHighlighter({
+  themes: ['slack-dark'],
+  langs: ['css']
+})
 
 highlighter.codeToHtml(
   'const a = 1',
@@ -126,7 +129,9 @@ highlighter.codeToHtml(
 )
 // @error: Throw error, `javascript` is not loaded
 
-await highlighter.loadLanguage('javascript') // 加载语言
+await highlighter.loadLanguage('javascript') // load the language
+
+// now it works
 ```
 
 如果你想加载所有主题和语言（并不建议），你可以遍历 `bundledLanguages` 和 `bundledThemes` 中的所有键。
