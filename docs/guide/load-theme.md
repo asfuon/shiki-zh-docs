@@ -21,7 +21,8 @@ const myTheme = {
 }
 
 const highlighter = await getHighlighter({
-  themes: [myTheme]
+  themes: [myTheme],
+  langs: [],
 })
 
 const code = `console.log('hello')`
@@ -40,7 +41,10 @@ import { getHighlighter } from 'shiki'
 // 从文件、网络请求或其他任何地方载入主题对象
 const myTheme = JSON.parse(fs.readFileSync('my-theme.json', 'utf8'))
 
-const highlighter = await getHighlighter()
+const highlighter = await getHighlighter({
+  langs: ['javascript'],
+  themes: [],
+})
 
 await highlighter.loadTheme(myTheme) // <--
 
@@ -51,4 +55,4 @@ const html = highlighter.codeToHtml(code, {
 })
 ```
 
-主题是一个 JavaScript 对象形式的 TextMate 主题，[它应该看起来像这样](https://github.com/antfu/textmate-grammars-themes/blob/main/packages/tm-themes/themes/dark-plus.json)。
+主题是一个 JavaScript 对象形式的 TextMate 主题，[它看起来像这样](https://github.com/antfu/textmate-grammars-themes/blob/main/packages/tm-themes/themes/dark-plus.json)。

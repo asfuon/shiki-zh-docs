@@ -50,7 +50,7 @@ const html = await codeToHtml(`console.log()`, {
 
 ### `rendererRich`
 
-[源代码](https://github.com/antfu/shiki/blob/main/packages/shiki-twoslash/src/renderer-rich.ts)
+[源代码](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/renderer-rich.ts)
 
 ::: tip 提示
 自 v0.10.0 开始，本渲染器是默认渲染器。
@@ -67,7 +67,7 @@ transformerTwoslash({
 })
 ```
 
-这里有一些使用内置 [`style-rich.css`](https://github.com/antfu/shiki/blob/main/packages/shiki-twoslash/style-rich.css) 的例子：
+这里有一些使用内置 [`style-rich.css`](https://github.com/shikijs/shiki/blob/main/packages/twoslash/style-rich.css) 的例子：
 
 <!-- eslint-skip -->
 
@@ -108,7 +108,7 @@ const c = 1
 
 ### `rendererClassic`
 
-[源代码](https://github.com/antfu/shiki/blob/main/packages/shiki-twoslash/src/renderer-classic.ts)
+[源代码](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/renderer-classic.ts)
 
 此渲染器与 [`shiki-twoslash`](https://shikijs.github.io/twoslash/) 的输出一致。
 
@@ -120,11 +120,11 @@ transformerTwoslash({
 })
 ```
 
-你可能需要引用 `shiki-twoslash` 的 CSS 来美化它。[在这里](https://github.com/antfu/shiki/blob/main/packages/shiki-twoslash/style-classic.css) 我们也提供了来自 `shiki-twoslash` 的 CSS 拷贝，不过它可能需要进一步的优化。
+你可能需要引用 `shiki-twoslash` 的 CSS 来美化它。[在这里](https://github.com/shikijs/shiki/blob/main/packages/twoslash/style-classic.css) 我们也提供了来自 `shiki-twoslash` 的 CSS 拷贝，不过它可能需要进一步的优化。
 
 ### `rendererFloatingVue`
 
-[源代码](https://github.com/antfu/shiki/blob/main/packages/vitepress-plugin-twoslash/src/renderer-floating-vue.ts)
+[源代码](https://github.com/shikijs/shiki/blob/main/packages/vitepress-twoslash/src/renderer-floating-vue.ts)
 
 这个渲染器使用 [Floating Vue](https://floating-vue.starpad.dev/) 作为浮动组件（在容器外渲染），并生成 Vue 模版语法。这个渲染器不可以直接使用，而是作为 [VitePress 集成](/packages/vitepress#twoslash) 的内部渲染器。在这里列出它，对你可能创建的自己的渲染器提供一些参考。
 

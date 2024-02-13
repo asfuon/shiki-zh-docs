@@ -37,6 +37,8 @@ Shiki 的 v1.0 版本是一次重大重写，我们借此机会修改了过去�
 - `shiki-twoslash` 完全重写。它不再是 Shiki 高亮器的包装，而是一个可以插入任何支持转换器的集成的 Shiki 转换器，以 [`@shikijs/twoslash`](/packages/twoslash) 出现。
 - `shiki-twoslash` 的集成，例如 `gatsby-remark-shiki-twoslash` etc, 等，会逐渐迁移到通用的 Shiki 版本。在此之前，你可以使用 [`@shikijs/rehype`](/packages/rehype) 或 [`@shikijs/markdown-it`](/packages/markdown-it) 来将 Shiki 集成元框架。
 - 引入了新的官方集成，如 [`@shikijs/monaco`](/packages/monaco)、[`@shikijs/cli`](/packages/cli)、[`@shikijs/rehype`](/packages/rehype) 以及 [`@shikijs/markdown-it`](/packages/markdown-it)。
+- `shiki-renderer-path` 和 `shiki-renderer-svg` 使用频率较低，现已被废弃。如果你需要它们，请发起一个 issue，并带上你的用例，我们会很乐意将它们再加回来。
+- 由于已经不再建议使用 [VuePress](https://github.com/vuejs/vuepress#status)，所以 `vuepress-plugin-shiki` 已被废弃。它的继承者 [VitePress](https://vitepress.dev/) 具有内建的 Shiki 集成。
 
 ## 从 Shikiji 迁移
 

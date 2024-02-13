@@ -113,7 +113,7 @@ await highlighter.loadTheme('vitesse-light')
 await highlighter.loadLanguage('css')
 ```
 
-与默认加载所有主题和语言的 `shiki` 不同，`shiki` 要求所有的主题和语言被显式的加载。
+自 v1.0 起，`shiki` 要求所有的主题和语言都被显式的加载。
 
 ```ts theme:slack-dark twoslash
 import { getHighlighter } from 'shiki'
