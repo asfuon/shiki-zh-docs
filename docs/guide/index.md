@@ -33,19 +33,6 @@ outline: deep
 
 在你的项目中 [安装 Shiki](/guide/install)。
 
-## 谁在使用？
-
-依赖 Shiki 的项目（按字母顺序排序）：
-
-- [Astro](https://docs.astro.build/en/guides/markdown-content/#syntax-highlighting)
-- [Expressive Code](https://expressive-code.com/)
-- [JSX email](https://jsx.email/)
-- [Lobe UI](https://github.com/lobehub/lobe-ui)
-- [Nuxt Content](https://content.nuxt.com/usage/markdown#code-highlighting)
-- [Slidev](https://sli.dev/custom/highlighters.html#highlighters)
-- [VitePress](https://vitepress.dev/guide/markdown#syntax-highlighting-in-code-blocks)
-- [Vocs](https://github.com/wevm/vocs)
-
 ## 捆绑包大小
 
 你可以在 [pkg-size.dev/shiki](https://pkg-size.dev/shiki) 上查看详细的捆绑包大小。
