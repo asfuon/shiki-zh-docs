@@ -37,12 +37,12 @@ outline: deep
 
 你可以在 [pkg-size.dev/shiki](https://pkg-size.dev/shiki) 上查看详细的捆绑包大小。
 
-截止 `v0.9.11`，2023 年 12 月 21 日的数据如下：
+截止 `v1.1.6`，2024 年 2 月 22 日的数据如下：
 
 | 捆绑包              | 大小（minified） | 大小（gzip） | 备注                                             |
 | ------------------- | ---------------: | -----------: | ------------------------------------------------ |
-| `shiki`             |           6.4 MB |       1.2 MB | 所有主题和语言的异步块（chunks）                 |
-| `shiki/bundle/full` |           6.4 MB |       1.2 MB | 与 `shiki` 包相同                                |
-| `shiki/bundle/web`  |           3.8 MB |       695 KB | 所有主题和常用 Web 语言的异步块                  |
-| `shiki/core`        |           100 KB |        31 KB | 不带任何主题和语言的核心引擎，需要你自己构建它们 |
+| `shiki`             |           6.9 MB |       1.3 MB | 所有主题和语言的异步块（chunks）                 |
+| `shiki/bundle/full` |           6.9 MB |       1.3 MB | 与 `shiki` 包相同                                |
+| `shiki/bundle/web`  |           4.2 MB |       748 KB | 所有主题和常用 Web 语言的异步块                  |
+| `shiki/core`        |           106 KB |        34 KB | 不带任何主题和语言的核心引擎，需要你自己构建它们 |
 | `shiki/wasm`        |           623 KB |       231 KB | 以 BASE64 字符串形式内联的 WASM 二进制文件       |

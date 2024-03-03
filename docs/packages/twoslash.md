@@ -110,7 +110,7 @@ const c = 1
 
 [源代码](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/renderer-classic.ts)
 
-此渲染器与 [`shiki-twoslash`](https://shikijs.github.io/twoslash/) 的输出一致。
+此渲染器与旧版的 [`shiki-twoslash`](https://github.com/shikijs/twoslash) 的输出一致。
 
 ```ts twoslash
 import { rendererClassic, transformerTwoslash } from '@shikijs/twoslash'
@@ -159,6 +159,7 @@ transformerTwoslash({
 你可以根据上面的说明自行将 Twoslash 与 Shiki 集成，也可以在这里找到与框架和工具的高级集成：
 
 - [VitePress](/packages/vitepress#twoslash) - 在 VitePress 中启用 Twoslash 支持。
+- [Nuxt](/packages/nuxt#twoslash) - 在 Nuxt Content 中启用 Twoslash 支持。
 - [Vocs](https://vocs.dev/docs/guides/twoslash) - 在 Vocs 中启用 Twoslash 支持。
 - [Slidev](https://sli.dev/custom/highlighters.html#twoslash-integration) - Slidev 内建了 Twoslash 支持
 
@@ -166,7 +167,7 @@ transformerTwoslash({
 
 ### 使用 CDN
 
-默认情况下，`@typescript/twoslash` 在 Node.js 上运行，并依赖于你的本地系统来解析 TypeScript 和导入的类型。在非 Node.js 环境中直接导入它将无法工作。
+默认情况下，[`twoslash`](https://github.com/twoslashes/twoslash/tree/main/packages/twoslash) 在 Node.js 上运行，并依赖于你的本地系统来解析 TypeScript 和导入的类型。在非 Node.js 环境中直接导入它将无法工作。
 
 幸运的是，Twoslash 实现了一个虚拟文件系统，允许你提供自己的文件以供 TypeScript 在内存中解析。然而，在浏览器中加载这些文件仍然是一个挑战。好在，于 [TypeScript WebSite](https://github.com/microsoft/TypeScript-Website) 中，TypeScript 团队提供了一些用来从 CDN 上按需获取类型的工具，他们称之为 [自动类型获取（ATA，Automatic Type Acquisition）](https://github.com/microsoft/TypeScript-Website/tree/v2/packages/ata)。
 

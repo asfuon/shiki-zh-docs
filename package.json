@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "private": true,
-  "packageManager": "pnpm@8.15.3",
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
     "lint": "eslint . --cache",
     "docs:dev": "vitepress dev docs",
@@ -14,7 +14,7 @@
     "fuse.js": "^7.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.6.4",
+    "@antfu/eslint-config": "^2.7.0",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.7",
     "@iconify-json/svg-spinners": "^1.1.2",
@@ -22,9 +22,9 @@
     "@shikijs/transformers": "latest",
     "@shikijs/twoslash": "latest",
     "@shikijs/vitepress-twoslash": "latest",
-    "@types/node": "^20.11.19",
+    "@types/node": "^20.11.24",
     "@unocss/reset": "^0.58.5",
-    "@vueuse/core": "^10.7.2",
+    "@vueuse/core": "^10.9.0",
     "eslint": "npm:eslint-ts-patch@8.56.0-0",
     "eslint-plugin-format": "^0.1.0",
     "eslint-ts-patch": "8.56.0-0",
@@ -32,7 +32,7 @@
     "floating-vue": "^5.2.2",
     "lint-staged": "^15.2.2",
     "pinia": "^2.1.7",
-    "pnpm": "^8.15.3",
+    "pnpm": "^8.15.4",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "shiki": "latest",
@@ -41,10 +41,10 @@
     "typescript": "^5.3.3",
     "unocss": "^0.58.5",
     "unplugin-vue-components": "^0.26.0",
-    "vite": "^5.1.3",
+    "vite": "^5.1.4",
     "vitepress": "^1.0.0-rc.44",
     "vitepress-plugin-mermaid": "^2.0.16",
-    "vue": "^3.4.19"
+    "vue": "^3.4.21"
   },
   "resolutions": {
     "@shikijs/compat": "latest",

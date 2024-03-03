@@ -51,6 +51,21 @@ const html = highlighter.codeToHtml('const foo = "bar"', { lang: 'javascript', t
 
 你还可以使用 `colorReplacements` 选项来替换主题的颜色值。当你想要使用具有不同调色的主题时，这么做非常有用。它在主题对象和 `codeToHast` 以及 `codeToHtml` 的选项上可用。
 
+`colorReplacements` 对象需要符合颜色与颜色一对一的形式，键是你想要替换的原颜色，值是新的颜色：
+
+```js
+const html = await codeToHtml(
+  code,
+  {
+    lang: 'js',
+    theme: 'min-dark',
+    colorReplacements: {
+      '#ff79c6': '#189eff'
+    }
+  }
+)
+```
+
 ## CSS 变量主题
 
 ::: warning 实验性
