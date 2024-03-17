@@ -82,7 +82,7 @@ const hast = codeToHast('.text-red { color: red; }', {
 
 因为我们使用了 WASM，所以提供的 [简写](#简写) 是异步执行的，并在内部按需加载主题和语言。在某些情况下，你可能需要同步地高亮代码，因此我们提供了 `getHighlighter` 函数来创建一个可以在后续同步使用的高亮器实例。
 
-用法与 `shiki` 基本相同，其中，每个主题和语言文件都是动态导入的 ES 模块。最好**显式地**列出语言和主题以获得最佳性能。
+使用方式与 `codeToHtml` 几乎相同，其中，每个主题和语言都是动态导入的 ES 模块。最好显式地列出语言和主题以获得最佳性能。
 
 ```ts twoslash theme:nord
 import { getHighlighter } from 'shiki'

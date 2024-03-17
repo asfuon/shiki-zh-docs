@@ -53,3 +53,19 @@ flowchart LR
 - `pre` - 对每个 `<pre>` 标签调用，并将其包裹在 `<code> `标签中。
 - `root` - HAST 树的根，通常情况下只有 `<pre>` 一个子标签。
 - `postprocess` - 在 HTML 生成后调用，可以用来修改最终输出。在 `codeToHast` 中不会被调用。
+
+## 元
+
+转换器还可以访问 [支持的集成](/guide/install#integrations) 中的 Markdown `meta` 字符串。
+
+````markdown
+<!-- [!code word:meta=here] -->
+```html meta=here
+````
+
+You can access the raw meta using:
+
+```ts
+options.meta
+// => { meta: 'here', __raw: 'meta=here' }
+```

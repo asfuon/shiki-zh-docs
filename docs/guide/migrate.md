@@ -6,6 +6,9 @@ outline: deep
 
 Shiki 的 v1.0 版本是一次重大重写，我们借此机会修改了过去的所有设计决定。我们原本有一个独立的软件包名称 [Shikiji](https://github.com/antfu/shikiji)，用来试验新的设计，现在合并回 Shiki，成为 v1.0。
 
+> [!TIP] 了解更多
+> 对 v1.0 背后的故事感兴趣吗？查看此 [博客文章](https://nuxt.com/blog/shiki-v1) 进一步了解。
+
 ## 从 v0.14 迁移
 
 与 [`shiki@0.14.3`](https://github.com/shikijs/shiki/releases/tag/v0.14.3) 相比，破坏性更改列表内容如下：
