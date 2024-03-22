@@ -2,7 +2,7 @@
 
 ## 捆绑的主题
 
-以下列出的主题是通过 [`tm-themes`](https://github.com/antfu/textmate-grammars-themes/tree/main/packages/tm-themes) 重新分发到 `shiki` 包的。
+以下列出的主题来自 [`tm-themes`](https://github.com/antfu/textmate-grammars-themes/tree/main/packages/tm-themes) 。
 
 <ThemesList />
 
@@ -12,7 +12,7 @@
 
 ## 特殊的主题
 
-你可以将主题设置为 `none`，以绕过高亮显示。这可以作为处理用户指定了不可用主题时的回滚效果，例如：
+你可以将主题设置为 `none` 以绕过高亮显示。这可以作为处理用户指定了不可用主题时的回滚效果，例如：
 
 ```ts twoslash theme:none
 import { codeToHtml } from 'shiki'

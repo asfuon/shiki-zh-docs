@@ -2,7 +2,7 @@
 
 ## 捆绑的语言
 
-以下列出的语言语法是通过 [`tm-grammars`](https://github.com/antfu/textmate-grammars-themes/tree/main/packages/tm-grammars) 重新分发到 `shiki` 包的。
+以下列出的语言语法来自 [`tm-grammars`](https://github.com/antfu/textmate-grammars-themes/tree/main/packages/tm-grammars) 。
 
 <LanguagesList />
 

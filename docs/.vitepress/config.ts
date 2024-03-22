@@ -13,7 +13,7 @@ const GUIDES: DefaultTheme.NavItemWithLink[] = [
   { text: '快速开始', link: '/guide/' },
   { text: '安装', link: '/guide/install' },
   { text: '捆绑包', link: '/guide/bundles' },
-  { text: '双主题', link: '/guide/dual-themes' },
+  { text: '深浅色模式', link: '/guide/dual-themes' },
   { text: '代码装饰', link: '/guide/decorations' },
   { text: '转换器', link: '/guide/transformers' },
   { text: '主题颜色控制', link: '/guide/theme-colors' },

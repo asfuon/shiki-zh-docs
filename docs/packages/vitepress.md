@@ -10,7 +10,7 @@ VitePress 提供了 [一些 Shiki 的自定义选项](https://github.com/vuejs/v
 
 ## Twoslash
 
-要在 Vitepress 中启用 [TypeScript Twoslash](/packages/twoslash)（类型悬停显示），使用我们提供的插件来快速开始，它借助 [Floating Vue](https://floating-vue.starpad.dev/) 在容器外显示具有样式的类型信息。
+要在 Vitepress 中启用 [TypeScript Twoslash](/packages/twoslash)（类型悬停显示），可以使用我们提供的插件来快速开始，它借助 [Floating Vue](https://floating-vue.starpad.dev/) 在容器外显示具有样式的类型信息。
 
 <Badges name="@shikijs/vitepress-twoslash" />
 
@@ -87,7 +87,7 @@ console.log('hello')
 
 <br> <!-- leaving some space for the query above -->
 
-### Vue 单文件组件
+### Vue SFC
 
 此外，这个插件集成了 [`twoslash-vue`](https://github.com/antfu/twoslash-vue)，所以你可以使用 `vue twoslash` 高亮 Vue SFC 块：
 

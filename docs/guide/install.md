@@ -6,7 +6,7 @@ outline: deep
 
 <Badges name="shiki" />
 
-使用 npm 或 [使用 CDN](#cdn-usage) 安装：
+你可以使用包管理器或 [使用 CDN](#cdn-usage) 进行安装：
 ::: code-group
 
 ```sh [npm]
@@ -29,7 +29,7 @@ bun add -D shiki
 
 ## 集成
 
-我们也提供了一些集成：
+我们也提供了一些集成以便你使用：
 
 - [markdown-it 插件](/packages/markdown-it)
 - [Rehype 插件](/packages/rehype)
@@ -42,14 +42,14 @@ bun add -D shiki
 
 ### 简写
 
-使用 `shiki` 的最快方式是使用我们提供的简写函数。它会根据需求加载必要的主题和语言，并自动将其缓存到内存中。
+使用 `shiki` 的最快方式是调用简写函数。它会根据你的需要加载主题和语言，并将其自动缓存到内存中。
 
-将你的代码片段传给 `codeToHtml` 函数并指定 `lang` 和 `theme`，它将返回一个带有高亮显示的 HTML 字符串，你可以将其嵌入到页面中。生成的 HTML 中，每个标签都有相应的内联样式，因此你不需要额外的 CSS 来进行样式设置。
+将你的代码片段传给 `codeToHtml` 函数并指定 `lang` 和 `theme` 选项，它将返回一个带有语法高亮的 HTML 字符串，你可以将其嵌入到页面中。生成的 HTML 中，每个标签都有相应的内联样式，因此你不需要额外的 CSS 来进行样式设置。
 
 ```ts twoslash
 import { codeToHtml } from 'shiki'
 
-const code = 'const a = 1' // 输入代码
+const code = 'const a = 1' // 输入代码片段
 const html = await codeToHtml(code, {
   lang: 'javascript',
   theme: 'vitesse-dark'
@@ -58,7 +58,7 @@ const html = await codeToHtml(code, {
 console.log(html) // 带有高亮显示的 HTML 字符串
 ```
 
-更进一步，你还可以使用 `codeToTokens` 或 `codeToHast` 来获取中间数据结构，并自行渲染它们：
+更进一步，你还可以使用 `codeToTokens` 或 `codeToHast` 函数来获取中间数据结构，并自行渲染它们：
 
 ```ts twoslash theme:min-dark
 import { codeToTokens } from 'shiki'
@@ -80,14 +80,14 @@ const hast = codeToHast('.text-red { color: red; }', {
 
 ### 高亮器用法
 
-因为我们使用了 WASM，所以提供的 [简写](#简写) 是异步执行的，并在内部按需加载主题和语言。在某些情况下，你可能需要同步地高亮代码，因此我们提供了 `getHighlighter` 函数来创建一个可以在后续同步使用的高亮器实例。
+因为 Shiki 使用了 WASM，所以提供的 [简写](#简写) 函数是异步执行的，并在其内部按需加载主题和语言。在某些情况下，你可能需要同步地高亮代码，因此我们提供了 `getHighlighter` 函数来创建一个可以在后续同步使用的高亮器实例。
 
-使用方式与 `codeToHtml` 几乎相同，其中，每个主题和语言都是动态导入的 ES 模块。最好显式地列出语言和主题以获得最佳性能。
+使用方式与 `codeToHtml` 函数几乎相同，其中，每个主题和语言都是动态导入的 ES 模块，最好显式地列出语言和主题以获得最佳性能。
 
 ```ts twoslash theme:nord
 import { getHighlighter } from 'shiki'
 
-// `getHighlighter` 是异步的，它会初始化内部（internal）
+// `getHighlighter` 是异步的，它会初始化高亮器
 // 并加载指定的语言和主题。
 const highlighter = await getHighlighter({
   themes: ['nord'],
@@ -95,14 +95,14 @@ const highlighter = await getHighlighter({
 })
 
 // 然后你就可以同步地使用 `highlighter.codeToHtml`
-// 并使用你刚刚指定的其中一个主题和语言。
+// 并使用你指定的其中一个主题和语言。
 const code = highlighter.codeToHtml('const a = 1', {
   lang: 'javascript',
   theme: 'nord'
 })
 ```
 
-此外，如果要在创建高亮器后加载主题和语言，使用 `loadTheme` 和 `loadLanguage` 方法。
+此外，如果你要在创建高亮器后加载主题和语言，可以使用 `loadTheme` 和 `loadLanguage` 方法。
 
 ```ts twoslash
 import { getHighlighter } from 'shiki'
@@ -113,7 +113,7 @@ await highlighter.loadTheme('vitesse-light')
 await highlighter.loadLanguage('css')
 ```
 
-自 v1.0 起，`shiki` 要求所有的主题和语言都被显式的加载。
+自 v1.0 起，`shiki` 要求所有的主题和语言都被显式地加载。
 
 ```ts theme:slack-dark twoslash
 import { getHighlighter } from 'shiki'
@@ -129,12 +129,12 @@ highlighter.codeToHtml(
 )
 // @error: Throw error, `javascript` is not loaded
 
-await highlighter.loadLanguage('javascript') // load the language
+await highlighter.loadLanguage('javascript') // 载入语言
 
-// now it works
+// 正常工作
 ```
 
-如果你想加载所有主题和语言（并不建议），你可以遍历 `bundledLanguages` 和 `bundledThemes` 中的所有键。
+如果你想一次加载所有主题和语言（并不建议），你可以遍历 `bundledLanguages` 和 `bundledThemes` 中的所有键。
 
 ```ts twoslash theme:poimandres
 import { bundledLanguages, bundledThemes, getHighlighter } from 'shiki'
@@ -152,7 +152,7 @@ highlighter.codeToHtml('const a = 1', {
 
 ### 细粒度捆绑
 
-当导入 `shiki` 时，所有的主题和语言都被捆绑为异步块（async chunks）。通常情况下，如果你不使用它们，你就不必在意，因为它们不会被加载。某些情况下，如果你要控制这些捆绑包的内容，你可以使用核心（`shiki/core`）来组合自己的捆绑包。
+导入 `shiki` 时，所有的主题和语言都被捆绑为异步块（async chunks）。通常情况下，如果你不使用它们，你就不必在意，因为它们不会被加载。某些情况下，如果你要控制这些捆绑包的内容，你可以使用核心（`shiki/core`）来组合自己的捆绑包。
 
 ```ts twoslash theme:material-theme-ocean
 // @noErrors
@@ -162,14 +162,14 @@ import { getHighlighterCore } from 'shiki/core'
 // `shiki/wasm` 包含以 BASE64 字符串内联的 WASM 二进制文件
 import getWasm from 'shiki/wasm'
 
-// 直接导入你需要的主题和语言模块，只有你导入的模块会被捆绑
+// 直接导入需要的主题和语言模块，只有导入的模块会被捆绑
 import nord from 'shiki/themes/nord.mjs'
 
 const highlighter = await getHighlighterCore({
   themes: [
-    // 你需要传入你导入的包，而不是字符串
+    // 传入导入的包，而不是字符串
     nord,
-    // 如果你需要块分割（chunk splitting），请使用动态导入
+    // 如果你需要进行块分割（chunk splitting），请使用动态导入
     import('shiki/themes/material-theme-ocean.mjs')
   ],
   langs: [
@@ -192,18 +192,18 @@ const code = highlighter.codeToHtml('const a = 1', {
 ```
 
 ::: info 注意
-[简写](#简写) 只在 `shiki` 捆绑包中可用。对于细粒度捆绑，你可以使用 [`createSingletonShorthands`](https://github.com/antfu/shiki/blob/main/packages/shiki-core/src/bundle-factory.ts) 来创建一个简写函数或者自己实现。
+[简写](#简写) 只在 `shiki` 捆绑包中可用。对于细粒度捆绑，你可以使用 [`createSingletonShorthands`](https://github.com/antfu/shiki/blob/main/packages/shiki-core/src/bundle-factory.ts) 来创建一个简写函数或者尝试自己实现。
 :::
 
 ### 预设捆绑包
 
-为了使用方便，我们还提供了一些预制的捆绑包，你可以在 [捆绑包](/guide/bundles) 部分了解更多信息。
+为了方便使用，我们还提供了一些预制的捆绑包，你可以在 [捆绑包](/guide/bundles) 部分了解更多的信息。
 
 ### 使用 CJS
 
-为了减小包的大小，`shiki` 以仅 ESM 的形式发布。但由于 Node.js 支持在 CJS 中动态导入 ESM 模块，你仍可以在 CJS 中使用它。
+为了减小包的大小，`shiki` 以仅 ESM 的形式发布。但由于 Node.js 支持在 CJS 中动态导入 ESM 模块，你仍可以在 CJS 中使用 Shiki。
 
-例如，以下 ESM 代码：
+例如以下 ESM 代码：
 
 ```ts twoslash
 // ESM
@@ -243,7 +243,7 @@ async function main() {
 
 ### 使用 CDN
 
-要在浏览器中通过 CDN 来使用 `shiki`，你可以使用 [esm.run](https://esm.run) 或者 [esm.sh](https://esm.sh)。
+要在浏览器中通过 CDN 来使用 `shiki`，你可以使用 [esm.run](https://esm.run) 或者 [esm.sh](https://esm.sh) 等服务。
 
 ```html theme:rose-pine
 <body>
@@ -266,7 +266,7 @@ async function main() {
 
 这非常高效，因为它只会按需加载语言和主题。对于上面的代码片段，只会发出四个请求（`shiki`、`shiki/themes/vitesse-light.mjs`、`shiki/langs/javascript.mjs` 和 `shiki/wasm.mjs`），共计传输约 200KB 的数据。
 
-[示例](https://jsfiddle.net/t7brz23v/)
+[查看示例](https://jsfiddle.net/t7brz23v/)
 
 ### Cloudflare Workers
 

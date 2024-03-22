@@ -70,7 +70,7 @@ const highlighter = await getHighlighter({
 })
 ```
 
-相反，手动加载文件（通过 `fs`，`import()` 或 `fetch()` 等）:
+所以，请手动加载文件（通过 `fs`，`import()` 或 `fetch()` 等）:
 
 ```ts
 const vineGrammar = JSON.parse(fs.readFileSync(join(__dirname, './vine-ts.tmLanguage.json'), 'utf8'))

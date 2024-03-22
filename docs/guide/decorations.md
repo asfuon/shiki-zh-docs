@@ -1,6 +1,6 @@
 # 代码装饰
 
-我们提供了一个代码装饰的 API，用来将渲染后指定位置的代码元素包裹在自定义类或前缀中。
+我们提供了一个装饰代码的 API，用来将渲染后指定位置的代码元素包裹在自定义类或前缀中。
 
 ```ts twoslash
 import { codeToHtml } from 'shiki'
@@ -24,7 +24,7 @@ const html = await codeToHtml(code, {
 })
 ```
 
-渲染的结果是是（已使用 CSS 样式化）：
+渲染的结果是（已使用 CSS 样式化）：
 
 ```ts
 // @decorations:[{"start":{"line":1,"character":0},"end":{"line":1,"character":11},"properties":{"class":"highlighted-word"}}]
@@ -32,7 +32,7 @@ const x = 10
 console.log(x)
 ```
 
-你也可以用以 0 作为索引的代码相对位置偏移来指定位置：
+你也可以用代码相对偏移位置（以 0 作为索引）来指定位置：
 
 ```ts twoslash
 import { codeToHtml } from 'shiki'
@@ -55,7 +55,7 @@ const html = await codeToHtml(code, {
 })
 ```
 
-这渲染出：
+这会渲染出：
 
 ```ts
 // @decorations:[{"start":21,"end":24,"properties":{"class":"highlighted-word"}}]
@@ -67,7 +67,7 @@ console.log(x)
 
 对于一些高级的用例，你可以使用 [转换器 API](./transformers.md) 来完全控制标签和 HAST 树。
 
-当然，如果你想在转换器中添加代码装饰，你可以使用以下的方法：
+如果你想在转换器中添加代码装饰，你可以使用以下的方法：
 
 ```ts twoslash
 /* eslint-disable import/no-duplicates */
@@ -102,4 +102,4 @@ const html = await codeToHtml(code, {
 })
 ```
 
-请注意，你只能在 `preprocess` 钩子时添加代码装饰，在之后的钩子中，对装饰数组的修改会被忽略。
+注意，你只能在 `preprocess` 钩子添加代码装饰，在往后的钩子中，装饰数组的修改会被忽略。

@@ -6,7 +6,7 @@ outline: deep
 
 <Badges name="@shikijs/transformers" />
 
-受 [shiki-processor](https://github.com/innocenzi/shiki-processor) 启发，为 Shiki 设计的常用转换器（Transformers）集合。
+受 [shiki-processor](https://github.com/innocenzi/shiki-processor) 启发，为 Shiki 设计的常用转换器（Transformers）的集合。
 
 ## 安装
 
@@ -130,7 +130,7 @@ export function foo() { // [!code word:Hello]
 }
 ```
 
-你还可以指定高亮显示的次数，例如 `[!code word:options:2]` 会高亮显示近两个 `options`。
+你还可以指定高亮显示的次数，例如 `[!code word:options:2]` 会高亮显示最近两个 `options`。
 
 ````md
 ```ts
@@ -200,7 +200,7 @@ export function foo() {
 
 将空白字符（Tab 和空格）渲染为单独的标签（具有 `tab` 或 `space` 类名）。
 
-使用一些 CSS，可以使其看起来像这样：
+同时使用一些 CSS，可以使其看起来像这样：
 
 <div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre v-pre class="shiki shiki-themes vitesse-light vitesse-dark vp-code" style="--shiki-light:#393a34;--shiki-dark:#dbd7caee;--shiki-light-bg:#ffffff;--shiki-dark-bg:#121212;" tabindex="0"><code><span class="line"><span style="--shiki-light:#AB5959;--shiki-dark:#CB7676;">function</span><span class="space"> </span><span style="--shiki-light:#59873A;--shiki-dark:#80A665;">block</span><span style="--shiki-light:#999999;--shiki-dark:#666666;">(</span><span class="space"> </span><span style="--shiki-light:#999999;--shiki-dark:#666666;">)</span><span class="space"> </span><span style="--shiki-light:#999999;--shiki-dark:#666666;">{</span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span style="--shiki-light:#59873A;--shiki-dark:#80A665;">space</span><span style="--shiki-light:#999999;--shiki-dark:#666666;">(</span><span class="space"> </span><span style="--shiki-light:#999999;--shiki-dark:#666666;">)</span></span>

@@ -6,7 +6,7 @@
 
 Monaco 内置的高亮器没有使用完整的 TextMate 语法，所以它可能不够准确。该集成使你可以在 Monaco 中使用 Shiki 的语法高亮引擎进行高亮显示，并共享 Shiki 的语法和主题。
 
-深受 [`monaco-editor-textmate`](https://github.com/zikaari/monaco-editor-textmate) 的启发。
+本集成深受 [`monaco-editor-textmate`](https://github.com/zikaari/monaco-editor-textmate) 的启发。
 
 ## 安装
 

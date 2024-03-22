@@ -6,7 +6,7 @@ outline: deep
 
 <Badges name="@shikijs/twoslash" />
 
-适用于 [Twoslash](https://github.com/twoslashes/twoslash) 的 shiki 转换器，在代码块内提供行内的类型悬停显示。
+适用于 [Twoslash](https://github.com/twoslashes/twoslash) 的 shiki 转换器，用于在代码块内提供行内的类型悬停显示。
 
 [TwoSlash 注释参考](https://twoslash.netlify.app/refs/notations)
 
@@ -16,7 +16,7 @@ outline: deep
 npm i -D @shikijs/twoslash
 ```
 
-这个包是 shiki 的一个**转换器插件**。这意味着对于每个支持传递 shiki 转换器的集成，你都可以使用此包。
+这个包是 shiki 的一个**转换器插件**，这意味着对于每个支持传递 shiki 转换器的集成，你都可以使用此包。
 
 ```ts twoslash
 import {
@@ -30,21 +30,21 @@ const html = await codeToHtml(`console.log()`, {
   lang: 'ts',
   theme: 'vitesse-dark',
   transformers: [
-    transformerTwoslash(), // <-- here
+    transformerTwoslash(), // <-- 这里
     // ...
   ],
 })
 ```
 
-默认的输出是没有样式的，你需要添加额外的 CSS 来使它们看起来更好。
+默认的输出是没有样式的，你需要添加额外的 CSS 来装饰它们。
 
 如果你想在浏览器或者 Workers 上运行 Twoslash，参考 [使用 CDN](#使用-cdn) 部分。
 
 ## 渲染器
 
-由于 [`hast`](https://github.com/syntax-tree/hast) 的灵活性，这个转换器允许你使用 ASTs 来自定义每个信息片段在输出的 HTML 中的呈现方式。
+由于 [`hast`](https://github.com/syntax-tree/hast) 的灵活性，本转换器允许你使用 AST 来自定义每个片段在输出 HTML 中的呈现方式。
 
-我们提供了两个内建的渲染器，当然，你也可以创建你自己的渲染器。
+我们提供了两个内建的渲染器，你也可以创建你自己的渲染器。
 
 ---
 
@@ -53,7 +53,7 @@ const html = await codeToHtml(`console.log()`, {
 [源代码](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/renderer-rich.ts)
 
 ::: tip 提示
-自 v0.10.0 开始，本渲染器是默认渲染器。
+自 v1.0 开始，本渲染器是默认渲染器。
 :::
 
 此渲染器提供了一个更明确的类名，前缀为 `twoslash-`，以便更好地进行作用域的限定。
@@ -120,7 +120,7 @@ transformerTwoslash({
 })
 ```
 
-你可能需要引用 `shiki-twoslash` 的 CSS 来美化它。[在这里](https://github.com/shikijs/shiki/blob/main/packages/twoslash/style-classic.css) 我们也提供了来自 `shiki-twoslash` 的 CSS 拷贝，不过它可能需要进一步的优化。
+你可能需要引用 `shiki-twoslash` 的 CSS 来装饰它。[在这里](https://github.com/shikijs/shiki/blob/main/packages/twoslash/style-classic.css) 我们也提供了来自 `shiki-twoslash` 的 CSS 拷贝，不过它可能需要进一步的优化。
 
 ### `rendererFloatingVue`
 
@@ -130,9 +130,9 @@ transformerTwoslash({
 
 ## 选项
 
-### 显式触发
+### 显式使用
 
-当与 `markdown-it-shiki` 或 `rehype-shiki` 集成时，我们可能不希望 Twoslash 在每个代码块上运行。在这种情况下，我们可以将 `explicitTrigger` 设置为 `true`，仅在指定呈现 Twoslash 的代码块上运行。
+当与 `markdown-it-shiki` 或 `rehype-shiki` 集成时，我们可能不希望 Twoslash 在每个代码块上运行。在这种情况下，我们可以将 `explicitTrigger` 设置为 `true`，仅在指定呈现 Twoslash 的代码块上显示。
 
 ```ts twoslash
 import { transformerTwoslash } from '@shikijs/twoslash'
@@ -161,7 +161,7 @@ transformerTwoslash({
 - [VitePress](/packages/vitepress#twoslash) - 在 VitePress 中启用 Twoslash 支持。
 - [Nuxt](/packages/nuxt#twoslash) - 在 Nuxt Content 中启用 Twoslash 支持。
 - [Vocs](https://vocs.dev/docs/guides/twoslash) - 在 Vocs 中启用 Twoslash 支持。
-- [Slidev](https://sli.dev/custom/highlighters.html#twoslash-integration) - Slidev 内建了 Twoslash 支持
+- [Slidev](https://sli.dev/custom/highlighters.html#twoslash-integration) - Slidev 具有内建的 Twoslash 支持。
 
 ## 用例指南
 
@@ -169,9 +169,9 @@ transformerTwoslash({
 
 默认情况下，[`twoslash`](https://github.com/twoslashes/twoslash/tree/main/packages/twoslash) 在 Node.js 上运行，并依赖于你的本地系统来解析 TypeScript 和导入的类型。在非 Node.js 环境中直接导入它将无法工作。
 
-幸运的是，Twoslash 实现了一个虚拟文件系统，允许你提供自己的文件以供 TypeScript 在内存中解析。然而，在浏览器中加载这些文件仍然是一个挑战。好在，于 [TypeScript WebSite](https://github.com/microsoft/TypeScript-Website) 中，TypeScript 团队提供了一些用来从 CDN 上按需获取类型的工具，他们称之为 [自动类型获取（ATA，Automatic Type Acquisition）](https://github.com/microsoft/TypeScript-Website/tree/v2/packages/ata)。
+幸运的是，Twoslash 实现了一个虚拟文件系统，允许你提供自己的文件以供 TypeScript 在内存中解析。然而，在浏览器中加载这些文件仍然是一个挑战。在 [TypeScript 网站](https://github.com/microsoft/TypeScript-Website) 中，TypeScript 团队提供了一些用来从 CDN 上按需获取类型的工具，他们称之为 [自动类型获取（ATA，Automatic Type Acquisition）](https://github.com/microsoft/TypeScript-Website/tree/v2/packages/ata)。
 
-我们简易地封装了构建块，并在 [`twoslash-cdn`](https://github.com/antfu/twoslash-cdn) 中提供了易于使用的 API。 例如：
+我们简易地封装了它们，并在 [`twoslash-cdn`](https://github.com/antfu/twoslash-cdn) 中提供了易于使用的 API。 例如：
 
 ```js
 // TODO: 在生产环境中使用显式的版本替换

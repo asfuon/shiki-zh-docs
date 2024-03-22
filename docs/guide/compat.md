@@ -23,4 +23,4 @@ outline: deep
 }
 ```
 
-你也可以查看 [破坏性改动列表](/guide/migrate#migrate-from-v0-14) 以助于你手动迁移这些更改。
+查看 [破坏性改动列表](/guide/migrate#migrate-from-v0-14) 有助于你手动迁移这些更改。
