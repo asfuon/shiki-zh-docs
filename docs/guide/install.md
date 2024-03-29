@@ -192,7 +192,7 @@ const code = highlighter.codeToHtml('const a = 1', {
 ```
 
 ::: info 注意
-[简写](#简写) 只在 `shiki` 捆绑包中可用。对于细粒度捆绑，你可以使用 [`createSingletonShorthands`](https://github.com/antfu/shiki/blob/main/packages/shiki-core/src/bundle-factory.ts) 来创建一个简写函数或者尝试自己实现。
+[简写](#简写) 只在 `shiki` 捆绑包中可用。对于细粒度捆绑，你可以使用 [`createSingletonShorthands`](https://github.com/shikijs/shiki/blob/main/packages/core/src/bundle-factory.ts) 来创建一个简写函数或者尝试自己实现。
 :::
 
 ### 预设捆绑包
