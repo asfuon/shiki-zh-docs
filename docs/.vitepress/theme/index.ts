@@ -25,7 +25,7 @@ export default {
       'home-hero-actions-after': () => h('div', { class: 'mt-10 mb--4 vp-doc' }, [
         h('a', { href: 'https://nuxt.com/blog/shiki-v1', target: '_blank', class: 'no-underline! flex-inline gap-1 items-center' }, [
           h('div', { class: 'i-ph-books-duotone text-2xl' }),
-          'The Evolution of Shiki v1.0',
+          'Shiki 1.0 的诞生',
           h('div', { class: 'i-ph-arrow-up-right mt--3 ml--1' }),
         ]),
       ]),

@@ -11,6 +11,7 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
+    "@iconify-json/ph": "^1.1.11",
     "fuse.js": "^7.0.0"
   },
   "devDependencies": {
@@ -22,7 +23,7 @@
     "@shikijs/transformers": "latest",
     "@shikijs/twoslash": "latest",
     "@shikijs/vitepress-twoslash": "latest",
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.12.2",
     "@unocss/reset": "^0.58.8",
     "@vueuse/core": "^10.9.0",
     "eslint": "npm:eslint-ts-patch@8.56.0-0",
