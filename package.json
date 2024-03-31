@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "private": true,
   "packageManager": "pnpm@8.15.5",
   "scripts": {
@@ -15,7 +15,7 @@
     "fuse.js": "^7.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.11.5",
+    "@antfu/eslint-config": "^2.11.6",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.7",
     "@iconify-json/svg-spinners": "^1.1.2",
