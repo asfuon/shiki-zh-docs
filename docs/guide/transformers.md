@@ -58,6 +58,8 @@ flowchart LR
 
 转换器还可以访问 [受支持的集成](/guide/install#integrations) 中的 Markdown `meta` 字符串。
 
+<!-- eslint-skip -->
+
 ````markdown
 <!-- [!code word:meta=here] -->
 ```html meta=here
