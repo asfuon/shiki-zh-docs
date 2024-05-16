@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "private": true,
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.1.1",
   "scripts": {
     "lint": "eslint . --cache",
     "docs:dev": "vitepress dev docs",
@@ -15,7 +15,7 @@
     "fuse.js": "^7.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.17.0",
+    "@antfu/eslint-config": "^2.18.0",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.8",
     "@iconify-json/svg-spinners": "^1.1.2",
@@ -23,7 +23,7 @@
     "@shikijs/transformers": "latest",
     "@shikijs/twoslash": "latest",
     "@shikijs/vitepress-twoslash": "latest",
-    "@types/node": "^20.12.11",
+    "@types/node": "^20.12.12",
     "@unocss/reset": "^0.58.9",
     "@vueuse/core": "^10.9.0",
     "eslint": "npm:eslint-ts-patch@8.57.0-0",
@@ -35,7 +35,7 @@
     "pinia": "^2.1.7",
     "pnpm": "^8.15.8",
     "prettier": "^3.2.5",
-    "rimraf": "^5.0.6",
+    "rimraf": "^5.0.7",
     "shiki": "latest",
     "simple-git-hooks": "^2.11.1",
     "taze": "^0.13.8",
