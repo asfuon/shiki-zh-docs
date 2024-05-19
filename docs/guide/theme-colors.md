@@ -66,6 +66,28 @@ const html = await codeToHtml(
 )
 ```
 
+此外，`colorReplacements` 可以包含制定作用域的替换。对于多主题的情况下，这样可以很方便的替换指定主题的颜色：
+
+```js
+const html = await codeToHtml(
+  code,
+  {
+    lang: 'js',
+    themes: { dark: 'min-dark', light: 'min-light' },
+    colorReplacements: {
+      'min-dark': {
+        '#ff79c6': '#189eff'
+      },
+      'min-light': {
+        '#ff79c6': '#defdef'
+      }
+    }
+  }
+)
+```
+
+该选项只在 `colorReplacements` 上可用，在主题对象上则不可用。
+
 ## CSS 变量主题
 
 ::: warning 实验性
