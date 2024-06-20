@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "version": "1.6.4",
+  "version": "1.7.0",
   "private": true,
-  "packageManager": "pnpm@9.3.0",
+  "packageManager": "pnpm@9.4.0",
   "scripts": {
     "lint": "eslint . --cache",
     "docs:dev": "vitepress dev docs",
@@ -23,15 +23,15 @@
     "@shikijs/transformers": "latest",
     "@shikijs/twoslash": "latest",
     "@shikijs/vitepress-twoslash": "latest",
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.14.6",
     "@unocss/reset": "^0.58.9",
-    "@vueuse/core": "^10.10.1",
+    "@vueuse/core": "^10.11.0",
     "eslint": "npm:eslint-ts-patch@8.57.0-0",
-    "eslint-plugin-format": "^0.1.1",
+    "eslint-plugin-format": "^0.1.2",
     "eslint-ts-patch": "8.57.0-0",
     "esno": "^4.7.0",
     "floating-vue": "^5.2.2",
-    "lint-staged": "^15.2.6",
+    "lint-staged": "^15.2.7",
     "pinia": "^2.1.7",
     "pnpm": "^8.15.8",
     "prettier": "^3.3.2",
@@ -42,10 +42,10 @@
     "typescript": "^5.4.5",
     "unocss": "^0.58.9",
     "unplugin-vue-components": "^0.26.0",
-    "vite": "^5.2.13",
+    "vite": "^5.3.1",
     "vitepress": "^1.2.3",
     "vitepress-plugin-mermaid": "^2.0.16",
-    "vue": "^3.4.27"
+    "vue": "^3.4.29"
   },
   "resolutions": {
     "@shikijs/compat": "latest",

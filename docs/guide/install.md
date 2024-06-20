@@ -72,7 +72,7 @@ const { tokens } = await codeToTokens('<div class="foo">bar</div>', {
 ```ts twoslash theme:catppuccin-mocha
 import { codeToHast } from 'shiki'
 
-const hast = codeToHast('.text-red { color: red; }', {
+const hast = await codeToHast('.text-red { color: red; }', {
   lang: 'css',
   theme: 'catppuccin-mocha'
 })
@@ -101,6 +101,12 @@ const code = highlighter.codeToHtml('const a = 1', {
   theme: 'nord'
 })
 ```
+
+:::info 重要注意
+高亮器实例应该 **持续且唯一存在**。你或许应该在某些地方缓存它，并在整个应用程序范围内复用。避免在热函数或者循环中调用 `getHighlighter`。
+
+如果你在 Node.js 上运行，我们建议使用 [简写](#简写)，它会为你管理高亮器并动态加载语言和主题。
+:::
 
 此外，如果你要在创建高亮器后加载主题和语言，可以使用 `loadTheme` 和 `loadLanguage` 方法。
 
