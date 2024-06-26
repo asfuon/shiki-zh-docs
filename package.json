@@ -47,16 +47,6 @@
     "vitepress-plugin-mermaid": "^2.0.16",
     "vue": "^3.4.30"
   },
-  "resolutions": {
-    "@shikijs/compat": "latest",
-    "@shikijs/core": "latest",
-    "@shikijs/markdown-it": "latest",
-    "@shikijs/transformers": "latest",
-    "@shikijs/twoslash": "latest",
-    "@shikijs/vitepress-twoslash": "latest",
-    "shiki": "latest",
-    "vscode-oniguruma": "^1.7.0"
-  },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
   },
