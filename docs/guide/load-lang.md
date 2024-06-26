@@ -6,11 +6,11 @@
 
 ```ts twoslash
 // @noErrors
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
 const myLang = JSON.parse(fs.readFileSync('my-lang.json', 'utf8'))
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   langs: [myLang],
   themes: ['vitesse-light']
 })
@@ -25,11 +25,11 @@ const html = highlighter.codeToHtml(code, {
 
 ```ts twoslash
 // @noErrors
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
 const myLang = JSON.parse(fs.readFileSync('my-lang.json', 'utf8'))
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   langs: [],
   themes: ['vitesse-light'],
 })
@@ -49,7 +49,7 @@ const html = highlighter.codeToHtml(code, {
 例如，以下代码不会工作：
 
 ```ts
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   langs: [
     {
       name: 'vue-vine',
@@ -75,7 +75,7 @@ const highlighter = await getHighlighter({
 ```ts
 const vineGrammar = JSON.parse(fs.readFileSync(join(__dirname, './vine-ts.tmLanguage.json'), 'utf8'))
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   langs: [
     {
       name: 'vue-vine',
@@ -100,9 +100,9 @@ const highlighter = await getHighlighter({
 你可以使用 `langAlias` 选项注册自定义的语言别名。例如：
 
 ```ts twoslash
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   langs: ['javascript'],
   langAlias: { // [!code hl:3]
     mylang: 'javascript',

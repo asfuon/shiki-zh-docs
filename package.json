@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "1.7.0",
+  "version": "1.9.1",
   "private": true,
   "packageManager": "pnpm@9.4.0",
   "scripts": {
@@ -17,13 +17,13 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.21.1",
     "@antfu/ni": "^0.21.12",
-    "@antfu/utils": "^0.7.8",
+    "@antfu/utils": "^0.7.10",
     "@iconify-json/svg-spinners": "^1.1.2",
     "@shikijs/markdown-it": "latest",
     "@shikijs/transformers": "latest",
     "@shikijs/twoslash": "latest",
     "@shikijs/vitepress-twoslash": "latest",
-    "@types/node": "^20.14.6",
+    "@types/node": "^20.14.9",
     "@unocss/reset": "^0.58.9",
     "@vueuse/core": "^10.11.0",
     "eslint": "npm:eslint-ts-patch@8.57.0-0",
@@ -39,13 +39,13 @@
     "shiki": "latest",
     "simple-git-hooks": "^2.11.1",
     "taze": "^0.13.8",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.2",
     "unocss": "^0.58.9",
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.3.1",
     "vitepress": "^1.2.3",
     "vitepress-plugin-mermaid": "^2.0.16",
-    "vue": "^3.4.29"
+    "vue": "^3.4.30"
   },
   "resolutions": {
     "@shikijs/compat": "latest",

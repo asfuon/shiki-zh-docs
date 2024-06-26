@@ -80,16 +80,16 @@ const hast = await codeToHast('.text-red { color: red; }', {
 
 ### 高亮器用法
 
-因为 Shiki 使用了 WASM，所以提供的 [简写](#简写) 函数是异步执行的，并在其内部按需加载主题和语言。在某些情况下，你可能需要同步地高亮代码，因此我们提供了 `getHighlighter` 函数来创建一个可以在后续同步使用的高亮器实例。
+因为 Shiki 使用了 WASM，所以提供的 [简写](#简写) 函数是异步执行的，并在其内部按需加载主题和语言。在某些情况下，你可能需要同步地高亮代码，因此我们提供了 `createHighlighter` 函数来创建一个可以在后续同步使用的高亮器实例。
 
 使用方式与 `codeToHtml` 函数几乎相同，其中，每个主题和语言都是动态导入的 ES 模块，最好显式地列出语言和主题以获得最佳性能。
 
 ```ts twoslash theme:nord
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
-// `getHighlighter` 是异步的，它会初始化高亮器
+// `createHighlighter` 是异步的，它会初始化高亮器
 // 并加载指定的语言和主题。
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   themes: ['nord'],
   langs: ['javascript'],
 })
@@ -103,7 +103,7 @@ const code = highlighter.codeToHtml('const a = 1', {
 ```
 
 :::info 重要注意
-高亮器实例应该 **持续且唯一存在**。你或许应该在某些地方缓存它，并在整个应用程序范围内复用。避免在热函数或者循环中调用 `getHighlighter`。
+高亮器实例应该 **持续且唯一存在**。你或许应该在某些地方缓存它，并在整个应用程序范围内复用。避免在热函数或者循环中调用 `createHighlighter`。
 
 如果你在 Node.js 上运行，我们建议使用 [简写](#简写)，它会为你管理高亮器并动态加载语言和主题。
 :::
@@ -111,8 +111,8 @@ const code = highlighter.codeToHtml('const a = 1', {
 此外，如果你要在创建高亮器后加载主题和语言，可以使用 `loadTheme` 和 `loadLanguage` 方法。
 
 ```ts twoslash
-import { getHighlighter } from 'shiki'
-const highlighter = await getHighlighter({ themes: [], langs: [] })
+import { createHighlighter } from 'shiki'
+const highlighter = await createHighlighter({ themes: [], langs: [] })
 // ---cut---
 // 在创建后加载主题和语言
 await highlighter.loadTheme('vitesse-light')
@@ -122,9 +122,9 @@ await highlighter.loadLanguage('css')
 自 v1.0 起，`shiki` 要求所有的主题和语言都被显式地加载。
 
 ```ts theme:slack-dark twoslash
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   themes: ['slack-dark'],
   langs: ['css']
 })
@@ -143,9 +143,9 @@ await highlighter.loadLanguage('javascript') // 载入语言
 如果你想一次加载所有主题和语言（并不建议），你可以遍历 `bundledLanguages` 和 `bundledThemes` 中的所有键。
 
 ```ts twoslash theme:poimandres
-import { bundledLanguages, bundledThemes, getHighlighter } from 'shiki'
+import { bundledLanguages, bundledThemes, createHighlighter } from 'shiki'
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   themes: Object.keys(bundledThemes),
   langs: Object.keys(bundledLanguages),
 })
@@ -163,7 +163,7 @@ highlighter.codeToHtml('const a = 1', {
 ```ts twoslash theme:material-theme-ocean
 // @noErrors
 // `shiki/core` 不包含任何主题、语言和 WASM 二进制文件
-import { getHighlighterCore } from 'shiki/core'
+import { createHighlighterCore } from 'shiki/core'
 
 // `shiki/wasm` 包含以 BASE64 字符串内联的 WASM 二进制文件
 import getWasm from 'shiki/wasm'
@@ -171,7 +171,7 @@ import getWasm from 'shiki/wasm'
 // 直接导入需要的主题和语言模块，只有导入的模块会被捆绑
 import nord from 'shiki/themes/nord.mjs'
 
-const highlighter = await getHighlighterCore({
+const highlighter = await createHighlighterCore({
   themes: [
     // 传入导入的包，而不是字符串
     nord,
@@ -213,10 +213,10 @@ const code = highlighter.codeToHtml('const a = 1', {
 
 ```ts twoslash
 // ESM
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
 async function main() {
-  const highlighter = await getHighlighter({
+  const highlighter = await createHighlighter({
     themes: ['vitesse-dark'],
     langs: ['javascript'],
   })
@@ -233,9 +233,9 @@ async function main() {
 ```ts twoslash
 // CJS
 async function main() {
-  const { getHighlighter } = await import('shiki')
+  const { createHighlighter } = await import('shiki')
 
-  const highlighter = await getHighlighter({
+  const highlighter = await createHighlighter({
     themes: ['vitesse-dark'],
     langs: ['javascript'],
   })
@@ -282,7 +282,7 @@ Cloudflare Workers [不支持从二进制数据初始化 WebAssembly](https://co
 
 ```ts twoslash theme:nord
 // @noErrors
-import { getHighlighterCore, loadWasm } from 'shiki/core'
+import { createHighlighterCore, loadWasm } from 'shiki/core'
 import nord from 'shiki/themes/nord.mjs'
 import js from 'shiki/langs/javascript.mjs'
 
@@ -291,7 +291,7 @@ await loadWasm(import('shiki/onig.wasm'))
 
 export default {
   async fetch() {
-    const highlighter = await getHighlighterCore({
+    const highlighter = await createHighlighterCore({
       themes: [nord],
       langs: [js],
     })

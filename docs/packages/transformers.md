@@ -341,3 +341,10 @@ console.log(msg) // 打印 Hello World
 ### `transformerRemoveLineBreak`
 
 删除 `<span class="line">` 之间的换行符。当你在 CSS 中将 `display: block` 设置为 `.line` 时这有可能用。
+
+---
+
+### `transformerRemoveNotationEscape`
+
+将 `// [\!code ...]` 转换为 `// [!code ...]`.
+避免按原样呈现转义符号语法。

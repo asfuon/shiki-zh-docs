@@ -5,7 +5,7 @@
 你可以通过向 `themes` 数组传递一个 `Theme` 对象来载入自定义主题。
 
 ```ts twoslash
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
 const myTheme = {
   name: 'my-theme',
@@ -20,7 +20,7 @@ const myTheme = {
   ]
 }
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   themes: [myTheme],
   langs: [],
 })
@@ -36,12 +36,12 @@ const html = highlighter.codeToHtml(code, {
 
 ```ts twoslash
 // @noErrors
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
 // 从文件、网络请求或其他任何地方载入主题对象
 const myTheme = JSON.parse(fs.readFileSync('my-theme.json', 'utf8'))
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   langs: ['javascript'],
   themes: [],
 })

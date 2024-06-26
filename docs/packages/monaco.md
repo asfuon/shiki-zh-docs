@@ -15,12 +15,12 @@ npm i -D @shikijs/monaco
 ```
 
 ```ts
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 import { shikiToMonaco } from '@shikijs/monaco'
 import * as monaco from 'monaco-editor-core'
 
 // 创建一个可复用的语法高亮器
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   themes: [
     'vitesse-dark',
     'vitesse-light',

@@ -5,9 +5,9 @@
 通常，TextMate 主题要求标签的颜色值是有效的十六进制颜色值，这个限制来自于 [`vscode-textmate`](https://github.com/microsoft/vscode-textmate)。然而，在 shiki v1.0 中，我们引入了一个自动解决的方法，通过用占位符替换非十六进制颜色值，并在标签化时将其替换回来。这样可以让你使用具有多种颜色值的主题进行渲染，而不必担心其技术细节：
 
 ```ts twoslash
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   langs: ['javascript'],
   themes: [
     {
@@ -99,7 +99,7 @@ shiki 提供了一个工厂函数助手（Factory Function Helper）`createCssVa
 此主题形式**不包含在默认设置**中，必须显式注册：
 
 ```ts twoslash
-import { createCssVariablesTheme, getHighlighter } from 'shiki'
+import { createCssVariablesTheme, createHighlighter } from 'shiki'
 
 // 创建一个自定义的 CSS 变量主题，以下是默认值。
 const myTheme = createCssVariablesTheme({ // [!code hl:6]
@@ -109,7 +109,7 @@ const myTheme = createCssVariablesTheme({ // [!code hl:6]
   fontStyle: true
 })
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   langs: ['javascript'],
   themes: [myTheme] // 注册主题 // [!code hl]
 })
