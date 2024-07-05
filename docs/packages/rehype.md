@@ -38,6 +38,8 @@ const file = await unified()
   .process(await fs.readFile('./input.md'))
 ```
 
+`@shikijs/rehype` 的默认导出使用了 来自 `getSingletonHighlighter` 的共享的 `shiki` 实例，在整个进程中存在。如果你想要完全控制高亮器的生命周期，使用 [细粒度捆绑 `@shikijs/rehype/core`](#细粒度捆绑)。
+
 ## 细粒度捆绑
 
 默认情况下会导入完整的 `shiki` 捆绑包。如果你使用了 [细粒度捆绑](/guide/install#细粒度捆绑)，你可以从 `@shikijs/rehype/core` 中导入 `rehypeShikiFromHighlighter` 并传入你自己的高亮器：

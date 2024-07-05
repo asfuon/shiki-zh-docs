@@ -99,7 +99,8 @@ shiki 提供了一个工厂函数助手（Factory Function Helper）`createCssVa
 此主题形式**不包含在默认设置**中，必须显式注册：
 
 ```ts twoslash
-import { createCssVariablesTheme, createHighlighter } from 'shiki'
+import { createCssVariablesTheme } from 'shiki/core'
+import { createHighlighter } from 'shiki'
 
 // 创建一个自定义的 CSS 变量主题，以下是默认值。
 const myTheme = createCssVariablesTheme({ // [!code hl:6]

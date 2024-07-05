@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "1.9.1",
+  "version": "1.10.1",
   "private": true,
   "packageManager": "pnpm@9.4.0",
   "scripts": {
@@ -15,7 +15,7 @@
     "fuse.js": "^7.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.21.1",
+    "@antfu/eslint-config": "^2.21.2",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.10",
     "@iconify-json/svg-spinners": "^1.1.2",
@@ -38,14 +38,14 @@
     "rimraf": "^5.0.7",
     "shiki": "latest",
     "simple-git-hooks": "^2.11.1",
-    "taze": "^0.13.8",
-    "typescript": "^5.5.2",
+    "taze": "^0.13.9",
+    "typescript": "^5.5.3",
     "unocss": "^0.58.9",
     "unplugin-vue-components": "^0.26.0",
-    "vite": "^5.3.1",
+    "vite": "^5.3.3",
     "vitepress": "^1.2.3",
     "vitepress-plugin-mermaid": "^2.0.16",
-    "vue": "^3.4.30"
+    "vue": "^3.4.31"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
