@@ -67,6 +67,8 @@ flowchart LR
 
 You can access the raw meta using:
 
+<!-- eslint-skip -->
+
 ```ts
 options.meta
 // => { meta: 'here', __raw: 'meta=here' }
