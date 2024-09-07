@@ -6,7 +6,7 @@ outline: deep
 
 <Badges name="shiki" />
 
-你可以使用包管理器或 [使用 CDN](#cdn-usage) 进行安装：
+你可以使用包管理器或 [使用 CDN](#使用-cdn) 进行安装：
 ::: code-group
 
 ```sh [npm]
