@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
-import { defineConfig } from 'vitepress'
 import { bundledThemes } from 'shiki'
+import { defineConfig } from 'vitepress'
 
 // @ts-expect-error missing types
 import { withMermaid } from 'vitepress-plugin-mermaid'
@@ -17,15 +17,18 @@ const GUIDES: DefaultTheme.NavItemWithLink[] = [
   { text: '代码装饰', link: '/guide/decorations' },
   { text: '转换器', link: '/guide/transformers' },
   { text: '主题颜色控制', link: '/guide/theme-colors' },
-  { text: '迁移', link: '/guide/migrate' },
-  { text: '兼容性构建', link: '/guide/compat' },
+  { text: '正则引擎', link: '/guide/regex-engines' },
+  { text: '同步使用方法', link: '/guide/sync-usage' },
   { text: '自定义主题', link: '/guide/load-theme' },
   { text: '自定义语言', link: '/guide/load-lang' },
+  { text: '迁移', link: '/guide/migrate' },
+  { text: '兼容性构建', link: '/guide/compat' },
 ]
 
 const REFERENCES: DefaultTheme.NavItemWithLink[] = [
   { text: '主题', link: '/themes' },
   { text: '语言', link: '/languages' },
+  { text: 'JavaScript 引擎兼容性', link: '/references/engine-js-compat' },
 ]
 
 const INTEGRATIONS: DefaultTheme.NavItemWithLink[] = [
@@ -35,6 +38,7 @@ const INTEGRATIONS: DefaultTheme.NavItemWithLink[] = [
   { text: 'Monaco Editor', link: '/packages/monaco' },
   { text: 'VitePress', link: '/packages/vitepress' },
   { text: 'Nuxt', link: '/packages/nuxt' },
+  { text: 'Next', link: '/packages/next' },
   { text: 'Astro', link: '/packages/astro' },
   { text: '常用转换器', link: '/packages/transformers' },
   { text: 'CLI', link: '/packages/cli' },

@@ -2,11 +2,13 @@
 outline: deep
 ---
 
-# 安装
+# 安装 & 使用
 
 <Badges name="shiki" />
 
-你可以使用包管理器或 [使用 CDN](#cdn-usage) 进行安装：
+# 安装
+
+你可以使用包管理器或 [使用 CDN](#使用-cdn) 进行安装：
 ::: code-group
 
 ```sh [npm]
@@ -160,46 +162,7 @@ highlighter.codeToHtml('const a = 1', {
 
 导入 `shiki` 时，所有的主题和语言都被捆绑为异步块（async chunks）。通常情况下，如果你不使用它们，你就不必在意，因为它们不会被加载。某些情况下，如果你要控制这些捆绑包的内容，你可以使用核心（`shiki/core`）来组合自己的捆绑包。
 
-```ts twoslash theme:material-theme-ocean
-// @noErrors
-// `shiki/core` 不包含任何主题、语言和 WASM 二进制文件
-import { createHighlighterCore } from 'shiki/core'
-
-// `shiki/wasm` 包含以 BASE64 字符串内联的 WASM 二进制文件
-import getWasm from 'shiki/wasm'
-
-// 直接导入需要的主题和语言模块，只有导入的模块会被捆绑
-import nord from 'shiki/themes/nord.mjs'
-
-const highlighter = await createHighlighterCore({
-  themes: [
-    // 传入导入的包，而不是字符串
-    nord,
-    // 如果你需要进行块分割（chunk splitting），请使用动态导入
-    import('shiki/themes/material-theme-ocean.mjs')
-  ],
-  langs: [
-    import('shiki/langs/javascript.mjs'),
-    // shiki 会尝试使用模块的默认导出
-    () => import('shiki/langs/css.mjs'),
-    // 或者一个返回自定义语法的 getter
-    async () => JSON.parse(await fs.readFile('my-grammar.json', 'utf-8'))
-  ],
-  loadWasm: getWasm
-})
-
-// 可选的，在创建后加载主题和语言
-await highlighter.loadTheme(import('shiki/themes/vitesse-light.mjs'))
-
-const code = highlighter.codeToHtml('const a = 1', {
-  lang: 'javascript',
-  theme: 'material-theme-ocean'
-})
-```
-
-::: info 注意
-[简写](#简写) 只在 `shiki` 捆绑包中可用。对于细粒度捆绑，你可以使用 [`createSingletonShorthands`](https://github.com/shikijs/shiki/blob/main/packages/core/src/bundle-factory.ts) 来创建一个简写函数或者尝试自己实现。
-:::
+查看 [细粒度捆绑](/guide/bundles#细粒度捆绑) 部分获取更多细节。
 
 ### 预设捆绑包
 

@@ -17,7 +17,7 @@ outline: deep
 - 所有语法 / 主题 / WASM 都是纯 ESM，可以按需懒加载，对捆绑器友好
 - 高度通用，不依赖于 Node.js 的 API 和文件系统，可以在任何现代 JavaScript 运行时上运行
 - 默认仅支持 ESM，不过你依然可以 [使用 CDN](/guide/install#cdn-usage) 或 [使用 CJS](/guide/install#cjs-usage)
-- [语言与主题的细粒度捆绑](/guide/install#fine-grained-bundle)
+- [语言与主题的细粒度捆绑](/guide/bundles#细粒度捆绑)
 - [深浅色模式支持](/guide/dual-themes)
 - [`hast` 支持](/guide/transformers#codetohast)
 - [转换器 API](/guide/transformers)

@@ -18,11 +18,11 @@ npm i -D @shikijs/rehype
 
 ```ts twoslash
 // @noErrors: true
-import { unified } from 'unified'
+import rehypeShiki from '@shikijs/rehype'
+import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
-import rehypeShiki from '@shikijs/rehype'
+import { unified } from 'unified'
 
 const file = await unified()
   .use(remarkParse)
@@ -42,18 +42,17 @@ const file = await unified()
 
 ## 细粒度捆绑
 
-默认情况下会导入完整的 `shiki` 捆绑包。如果你使用了 [细粒度捆绑](/guide/install#细粒度捆绑)，你可以从 `@shikijs/rehype/core` 中导入 `rehypeShikiFromHighlighter` 并传入你自己的高亮器：
+默认情况下会导入完整的 `shiki` 捆绑包。如果你使用了 [细粒度捆绑](/guide/bundles#细粒度捆绑)，你可以从 `@shikijs/rehype/core` 中导入 `rehypeShikiFromHighlighter` 并传入你自己的高亮器：
 
 ```ts twoslash
 // @noErrors: true
-import { unified } from 'unified'
+import rehypeShikiFromHighlighter from '@shikijs/rehype/core'
+import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
-import rehypeShikiFromHighlighter from '@shikijs/rehype/core'
-
 import { createHighlighterCore } from 'shiki/core'
-import getWasm from 'shiki/wasm'
+
+import { unified } from 'unified'
 
 const highlighter = await createHighlighterCore({
   themes: [
@@ -62,7 +61,7 @@ const highlighter = await createHighlighterCore({
   langs: [
     import('shiki/langs/javascript.mjs'),
   ],
-  loadWasm: getWasm
+  loadWasm: import('shiki/wasm')
 })
 
 const raw = await fs.readFile('./input.md')
@@ -98,3 +97,39 @@ console.log('3') // 高亮
 console.log('4') // 高亮
 ```
 ````
+
+### 行内代码
+
+您也可以使用 `inline` 选项对行内代码进行高亮。
+
+| 选项                    | 示例             | 描述                                      |
+| ----------------------- | ---------------- | ----------------------------------------- |
+| `false`                 | -                | 禁用行内代码高亮（默认）                  |
+| `'tailing-curly-colon'` | `let a = 1{:js}` | 使用 `{:language}` 标记在代码块中进行高亮 |
+
+在 Rehype 插件中启用 `inline`：
+
+```ts twoslash
+// @noErrors: true
+import rehypeShiki from '@shikijs/rehype'
+import rehypeStringify from 'rehype-stringify'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import { unified } from 'unified'
+
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkRehype)
+  .use(rehypeShiki, {
+    inline: 'tailing-curly-colon', // 或其他选项
+    // ...
+  })
+  .use(rehypeStringify)
+  .process(await fs.readFile('./input.md'))
+```
+
+然后，您可以在 Markdown 中使用行内代码：
+
+```md
+此代码 `console.log("Hello World"){:js}` 将被高亮显示。
+```

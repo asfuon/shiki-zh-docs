@@ -20,11 +20,11 @@ npm i -D @shikijs/twoslash
 
 ```ts twoslash
 import {
-  codeToHtml,
-} from 'shiki'
-import {
   transformerTwoslash,
 } from '@shikijs/twoslash'
+import {
+  codeToHtml,
+} from 'shiki'
 
 const html = await codeToHtml(`console.log()`, {
   lang: 'ts',
@@ -177,9 +177,9 @@ transformerTwoslash({
 // TODO: 在生产环境中使用显式的版本替换
 import { createTransformerFactory, rendererRich } from 'https://esm.sh/@shikijs/twoslash@latest/core'
 import { codeToHtml } from 'https://esm.sh/shiki@latest'
+import { createTwoslashFromCDN } from 'https://esm.sh/twoslash-cdn@latest'
 import { createStorage } from 'https://esm.sh/unstorage@latest'
 import indexedDbDriver from 'https://esm.sh/unstorage@latest/drivers/indexedb'
-import { createTwoslashFromCDN } from 'https://esm.sh/twoslash-cdn@latest'
 
 // ============= 初始化 =============
 

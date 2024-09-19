@@ -13,8 +13,8 @@ npm i -D @shikijs/markdown-it
 ## 使用方法
 
 ```ts twoslash
-import MarkdownIt from 'markdown-it'
 import Shiki from '@shikijs/markdown-it'
+import MarkdownIt from 'markdown-it'
 
 const md = MarkdownIt()
 
@@ -28,12 +28,12 @@ md.use(await Shiki({
 
 ## 细粒度捆绑
 
-默认情况下会导入完整的 `shiki` 捆绑包。如果你使用了 [细粒度捆绑](/guide/install#细粒度捆绑)，你可以从 `@shikijs/markdown-it/core` 中导入并传入你自己的高亮器：
+默认情况下会导入完整的 `shiki` 捆绑包。如果你使用了 [细粒度捆绑](/guide/bundles#细粒度捆绑)，你可以从 `@shikijs/markdown-it/core` 中导入并传入你自己的高亮器：
 
 ```ts twoslash
 // @noErrors: true
-import MarkdownIt from 'markdown-it'
 import { fromHighlighter } from '@shikijs/markdown-it/core'
+import MarkdownIt from 'markdown-it'
 import { createHighlighterCore } from 'shiki/core'
 import getWasm from 'shiki/wasm'
 

@@ -90,10 +90,6 @@ const html = await codeToHtml(
 
 ## CSS 变量主题
 
-::: warning 实验性
-此功能是实验性的，可能会在不遵循如下语义化版本控制规范（semver）的情况下进行更改。
-:::
-
 shiki 提供了一个工厂函数助手（Factory Function Helper）`createCssVariablesTheme`，用于更方便地创建使用 CSS 变量的主题。请注意，这个主题形式比大多数其他主题的细粒度要低，并且需要在你的应用程序中定义 CSS 变量。这是为了更方便地从 Shiki 的 [`css-variables` 主题](https://github.com/shikijs/shiki/blob/main/docs/themes.md#theming-with-css-variables) 迁移而提供的。但为了更好的显示效果，我们建议使用 [多种颜色值支持](#多种颜色值支持) 或 [颜色替换](#颜色替换) 来覆盖现有的主题。
 
 此主题形式**不包含在默认设置**中，必须显式注册：
