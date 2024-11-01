@@ -46,6 +46,7 @@ const highlighter = await createHighlighter({
 // @noErrors
 // `shiki/core` 不包含任何主题、语言和 WASM 二进制文件
 import { createHighlighterCore } from 'shiki/core'
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 
 // `shiki/wasm` 包含以 BASE64 字符串内联的 WASM 二进制文件
 import getWasm from 'shiki/wasm'
@@ -67,7 +68,8 @@ const highlighter = await createHighlighterCore({
     // 或者一个返回自定义语法的 getter
     async () => JSON.parse(await fs.readFile('my-grammar.json', 'utf-8'))
   ],
-  loadWasm: getWasm
+  // `shiki/wasm` contains the wasm binary inlined as base64 string.
+  engine: createOnigurumaEngine(import('shiki/wasm'))
 })
 
 // 可选的，在创建后加载主题和语言

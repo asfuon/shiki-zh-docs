@@ -25,12 +25,12 @@ const html = shiki.highlight('console.log(1)', { lang: 'js', theme: 'nord' })
 
 ```ts
 import { createHighlighterCoreSync } from 'shiki/core'
-import { createWasmOnigEngine } from 'shiki/engine/oniguruma'
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 import js from 'shiki/langs/javascript.mjs'
 import nord from 'shiki/themes/nord.mjs'
 
 // 在之前某个地方加载
-const engine = await createWasmOnigEngine(import('shiki/wasm'))
+const engine = await createOnigurumaEngine(import('shiki/wasm'))
 
 const shiki = createHighlighterCoreSync({
   themes: [nord],

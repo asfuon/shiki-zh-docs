@@ -1,11 +1,8 @@
 import type { DefaultTheme } from 'vitepress'
 import { bundledThemes } from 'shiki'
 import { defineConfig } from 'vitepress'
-
-// @ts-expect-error missing types
 import { withMermaid } from 'vitepress-plugin-mermaid'
 import { transformerMetaWordHighlight, transformerNotationWordHighlight, transformerRemoveNotationEscape } from '@shikijs/transformers'
-import { defaultHoverInfoProcessor, transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import { version } from '../../package.json'
 import vite from './vite.config'
 
@@ -21,6 +18,7 @@ const GUIDES: DefaultTheme.NavItemWithLink[] = [
   { text: '同步使用方法', link: '/guide/sync-usage' },
   { text: '自定义主题', link: '/guide/load-theme' },
   { text: '自定义语言', link: '/guide/load-lang' },
+  { text: '未来', link: '/guide/future' },
   { text: '迁移', link: '/guide/migrate' },
   { text: '兼容性构建', link: '/guide/compat' },
 ]
@@ -75,21 +73,25 @@ export default withMermaid(defineConfig({
       {
         // Render custom themes with codeblocks
         name: 'shiki:inline-theme',
-        preprocess(code: any, options: any) {
+        preprocess(code, options) {
           const reg = /\btheme:([\w,-]+)\b/
           const match = options.meta?.__raw?.match(reg)
           if (!match?.[1])
             return
           const theme = match[1]
-          const themes = theme.split(',').map((i: any) => i.trim())
+          const themes = theme.split(',').map(i => i.trim())
           if (!themes.length)
             return
           if (themes.length === 1) {
+            // @ts-expect-error anyway
             delete options.themes
+            // @ts-expect-error anyway
             options.theme = themes[0]
           }
           else if (themes.length === 2) {
+            // @ts-expect-error anyway
             delete options.theme
+            // @ts-expect-error anyway
             options.themes = {
               light: themes[0],
               dark: themes[1],
@@ -113,14 +115,14 @@ export default withMermaid(defineConfig({
           return code
         },
       },
-      transformerTwoslash({
-        // errorRendering: 'hover',
-        processHoverInfo(info) {
-          return defaultHoverInfoProcessor(info)
-            // Remove shiki_core namespace
-            .replace(/_shikijs_core\w*\./g, '')
-        },
-      }),
+      // transformerTwoslash({
+      //   // errorRendering: 'hover',
+      //   processHoverInfo(info) {
+      //     return defaultHoverInfoProcessor(info)
+      //       // Remove shiki_core namespace
+      //       .replace(/_shikijs_core\w*\./g, '')
+      //   },
+      // }),
       transformerRemoveNotationEscape(),
     ],
   },

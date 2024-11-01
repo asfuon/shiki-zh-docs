@@ -171,7 +171,7 @@ CSS 变量的示例如下：
 
 如果你是从 Shiki 的 v0 版本迁移来的，以下是一些对 Shiki 的 `css-variables` 条目的更名供你参考：
 
-| Shiki v0                   | Shiki                |
+| Shiki v0                   | Shiki v1.0           |
 | -------------------------- | -------------------- |
 | `--shiki-color-text`       | `--shiki-foreground` |
 | `--shiki-color-background` | `--shiki-background` |

@@ -28,12 +28,12 @@ Shiki 提供了两个内置引擎：
 
 ```ts
 import { createHighlighter } from 'shiki'
-import { createWasmOnigEngine } from 'shiki/engine/oniguruma'
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 
 const shiki = await createShiki({
   themes: ['nord'],
   langs: ['javascript'],
-  engine: createWasmOnigEngine(import('shiki/wasm'))
+  engine: createOnigurumaEngine(import('shiki/wasm'))
 })
 ```
 
