@@ -62,7 +62,7 @@ const html = shiki.codeToHtml('const a = 1', { lang: 'javascript', theme: 'nord'
 
 请查看[兼容性表](/references/engine-js-compat)以了解您使用的语言的支持状态。
 
-如果可以接受不匹配，并且您希望无论如何都能得到结果，您可以启用 `forgiving` 选项以抑制转换过程中发生的任何错误：
+与 Oniguruma 引擎不同，JavaScript 引擎默认是严格模式。如果遇到无法转换的模式，它会抛出错误。如果可以接受不完全匹配，并希望尽可能获得最佳结果，可以启用 `forgiving` 选项以抑制转换过程中发生的任何错误：
 
 ```ts
 const jsEngine = createJavaScriptRegexEngine({ forgiving: true })
@@ -70,7 +70,21 @@ const jsEngine = createJavaScriptRegexEngine({ forgiving: true })
 ```
 
 ::: info
-如果您在 Node.js 上运行 Shiki（或在构建时），我们仍然建议使用 Oniguruma 引擎以获得最佳效果，因为大多数情况下，包大小或 WebAssembly 支持并不是问题。
+如果你在 Node.js 上运行 Shiki（或在构建时运行），且对包大小或 WebAssembly 的支持没有顾虑，我们仍然推荐使用 Oniguruma 引擎以获得最佳效果。
 
 JavaScript 引擎更适合在某些情况下在浏览器中运行，特别是在您希望控制包大小时。
 :::
+
+### JavaScript 运行时目标
+
+为了获得最佳效果，[Oniguruma-To-ES](https://github.com/slevithan/oniguruma-to-es) 使用 [RegExp 的 `v` 标志](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicodeSets)，该标志在 Node.js v20+ 和 ES2024 中可用（[浏览器兼容性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicodeSets#browser_compatibility)）。
+
+对于较旧的运行环境，可以使用 `u` 标志，但这会导致支持的语法数量略少。
+
+默认情况下，运行时目标会被自动检测。你可以通过设置 `target` 选项来覆盖此行为：
+
+```ts
+const jsEngine = createJavaScriptRegexEngine({
+  target: 'ES2018', // 或 'ES2024'，默认值为 'auto'
+})
+```

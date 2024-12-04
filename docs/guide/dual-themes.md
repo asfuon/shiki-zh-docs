@@ -97,15 +97,31 @@ const code = await codeToHtml('console.log("hello")', {
 })
 ```
 
-标签会以类似如下形式生成：
+标签会根据对应的主题 CSS 变量生成：
 
 ```html
 <span style="color:#1976D2;--shiki-dark:#D8DEE9;--shiki-dim:#566575">console</span>
 ```
 
-然后，修改你的 CSS 代码以控制每个主题何时生效，这是一个示例：
+然后，修改你的 CSS 代码以控制每个主题生效时间，这是一个示例：
 
 [示例预览](https://htmlpreview.github.io/?https://raw.githubusercontent.com/shikijs/shiki/main/packages/shiki/test/out/multiple-themes.html)
+
+之后，你需要将主题的 CSS 变量应用到带有 `shiki` 类的元素及其下的标记上，例如基于父元素的 `data-theme` 属性：
+
+```css
+[data-theme='dark'] .shiki,
+[data-theme='dark'] .shiki span {
+  background-color: var(--s-dark-bg) !important;
+  color: var(--s-dark) !important;
+}
+
+[data-theme='dim'] .shiki,
+[data-theme='dim'] .shiki span {
+  background-color: var(--s-dim-bg) !important;
+  color: var(--s-dim) !important;
+}
+```
 
 ### 不使用默认颜色
 

@@ -28,7 +28,7 @@ const code = await codeToHtml('foo\bar', {
 })
 ```
 
-我们也提供了一些常用的转换器供你使用，查看 [`shiki-transforms`](/packages/transformers) 了解更多。
+我们也提供了一些常用的转换器供你使用，查看 [`shiki-transforms`](/packages/transformers) 和 [`@shikijs/colorized-brackets](/packages/colorized-brackets) 了解更多。
 
 ## 转换器钩子
 
@@ -62,7 +62,7 @@ flowchart LR
 
 ````markdown
 <!-- [!code word:meta=here] -->
-```html meta=here
+```html foo=bar baz-qux="qu ux"
 ````
 
 You can access the raw meta using:
@@ -71,5 +71,5 @@ You can access the raw meta using:
 
 ```ts
 options.meta
-// => { meta: 'here', __raw: 'meta=here' }
+// => { __raw: 'foo=bar baz-qux="qu ux"' }
 ```

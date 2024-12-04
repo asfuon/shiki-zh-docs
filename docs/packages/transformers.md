@@ -348,3 +348,84 @@ console.log(msg) // 打印 Hello World
 
 将 `// [\!code ...]` 转换为 `// [!code ...]`.
 避免按原样呈现转义符号语法。
+
+---
+
+### `transformerStyleToClass`
+
+将 Shiki 的内联样式转换为唯一的类名。
+
+类名是根据样式对象的哈希值生成的，并带有你提供的前缀/后缀。可以在多次高亮处理时使用该转换器，并最终提取 CSS 以复用完全相同的样式。由于 Shiki 本身不处理 CSS，提取、应用或打包 CSS 的方法需由你的集成逻辑决定。
+
+例如：
+
+```ts
+import { transformerStyleToClass } from '@shikijs/transformers'
+import { codeToHtml } from 'shiki'
+
+const toClass = transformerStyleToClass({ // [!code highlight:3]
+  classPrefix: '__shiki_',
+})
+
+const code = `console.log('hello')`
+const html = await codeToHtml(code, {
+  lang: 'ts',
+  themes: {
+    dark: 'vitesse-dark',
+    light: 'vitesse-light',
+  },
+  defaultColor: false,
+  transformers: [toClass], // [!code highlight]
+})
+
+// 转换器实例提供了获取 CSS 的方法
+const css = toClass.getCSS() // [!code highlight]
+
+// 在你的应用中使用 `html` 和 `css`
+```
+
+HTML 输出：
+
+```html
+<pre class="shiki shiki-themes vitesse-dark vitesse-light __shiki_9knfln" tabindex="0"><code><span class="line">
+  <span class="__shiki_14cn0u">console</span>
+  <span class="__shiki_ps5uht">.</span>
+  <span class="__shiki_1zrdwt">log</span>
+  <span class="__shiki_ps5uht">(</span>
+  <span class="__shiki_236mh3">'</span>
+  <span class="__shiki_1g4r39">hello</span>
+  <span class="__shiki_236mh3">'</span>
+  <span class="__shiki_ps5uht">)</span>
+</span></code></pre>
+```
+
+CSS output:
+
+```css
+.__shiki_14cn0u {
+  --shiki-dark: #bd976a;
+  --shiki-light: #b07d48;
+}
+.__shiki_ps5uht {
+  --shiki-dark: #666666;
+  --shiki-light: #999999;
+}
+.__shiki_1zrdwt {
+  --shiki-dark: #80a665;
+  --shiki-light: #59873a;
+}
+.__shiki_236mh3 {
+  --shiki-dark: #c98a7d77;
+  --shiki-light: #b5695977;
+}
+.__shiki_1g4r39 {
+  --shiki-dark: #c98a7d;
+  --shiki-light: #b56959;
+}
+.__shiki_9knfln {
+  --shiki-dark: #dbd7caee;
+  --shiki-light: #393a34;
+  --shiki-dark-bg: #121212;
+  --shiki-light-bg: #ffffff;
+}
+```

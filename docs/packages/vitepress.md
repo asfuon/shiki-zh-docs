@@ -117,3 +117,26 @@ onMounted(() => {
   </button>
 </template>
 ```
+
+### 文件系统缓存
+
+为了加速构建过程，可以为生成的类型启用文件系统缓存，该缓存可在多次构建之间共享。默认情况下，缓存存储在 `.vitepress/cache/twoslash` 文件夹中，与其他 VitePress 缓存共存。
+
+在你的 [`.vitepress/config.ts`](https://vitepress.dev/reference/site-config) 文件中：
+
+```ts
+// .vitepress/config.ts
+import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
+import { createFileSystemTypesCache } from '@shikijs/vitepress-twoslash/cache-fs' // [!code hl]
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  markdown: {
+    codeTransformers: [
+      transformerTwoslash({
+        typesCache: createFileSystemTypesCache() // [!code hl]
+      })
+    ]
+  }
+})
+```

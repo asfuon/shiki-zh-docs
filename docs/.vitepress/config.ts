@@ -3,6 +3,8 @@ import { bundledThemes } from 'shiki'
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 import { transformerMetaWordHighlight, transformerNotationWordHighlight, transformerRemoveNotationEscape } from '@shikijs/transformers'
+import { transformerColorizedBrackets } from '@shikijs/colorized-brackets'
+import { createFileSystemTypesCache } from '@shikijs/vitepress-twoslash/cache-fs'
 import { version } from '../../package.json'
 import vite from './vite.config'
 
@@ -39,6 +41,7 @@ const INTEGRATIONS: DefaultTheme.NavItemWithLink[] = [
   { text: 'Next', link: '/packages/next' },
   { text: 'Astro', link: '/packages/astro' },
   { text: '常用转换器', link: '/packages/transformers' },
+  { text: '括号着色', link: '/packages/colorized-brackets' },
   { text: 'CLI', link: '/packages/cli' },
 ]
 
@@ -122,8 +125,10 @@ export default withMermaid(defineConfig({
       //       // Remove shiki_core namespace
       //       .replace(/_shikijs_core\w*\./g, '')
       //   },
+      //   typesCache: createFileSystemTypesCache(),
       // }),
       transformerRemoveNotationEscape(),
+      transformerColorizedBrackets({ explicitTrigger: true }),
     ],
   },
 
