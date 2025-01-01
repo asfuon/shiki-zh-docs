@@ -18,14 +18,24 @@ import { codeToHtml } from 'shiki'
 export default function Page() {
   return (
     <main>
-      <CodeBlock />
+      <CodeBlock lang="ts">
+        {[
+          'console.log("Hello")',
+          'console.log("World")',
+        ].join('\n')}
+      </CodeBlock>
     </main>
   )
 }
 
-async function CodeBlock() {
-  const out = await codeToHtml('console.log("Hello World")', {
-    lang: 'ts',
+interface Props {
+  children: string
+  lang: BundledLanguage
+}
+
+async function CodeBlock(props: Props) {
+  const out = await codeToHtml(props.children, {
+    lang: props.lang,
     theme: 'github-dark'
   })
 
@@ -38,23 +48,34 @@ async function CodeBlock() {
 您还可以调用 `codeToHast` 获取 HTML 抽象语法树，并使用 [`hast-util-to-jsx-runtime`](https://github.com/syntax-tree/hast-util-to-jsx-runtime) 将其渲染。通过此方法，您可以渲染自己的 `pre` 和 `code` 组件。
 
 ```tsx
+import type { JSX } from 'react'
+import type { BundledLanguage } from 'shiki'
 import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 import { Fragment } from 'react'
-// @ts-expect-error -- untyped
 import { jsx, jsxs } from 'react/jsx-runtime'
 import { codeToHast } from 'shiki'
 
 export default function Page() {
   return (
     <main>
-      <CodeBlock />
+      <CodeBlock lang="ts">
+        {[
+          'console.log("Hello")',
+          'console.log("World")',
+        ].join('\n')}
+      </CodeBlock>
     </main>
   )
 }
 
-async function CodeBlock() {
-  const out = await codeToHast('console.log("Hello World")', {
-    lang: 'ts',
+interface Props {
+  children: string
+  lang: BundledLanguage
+}
+
+async function CodeBlock(props: Props) {
+  const out = await codeToHast(props.children, {
+    lang: props.lang,
     theme: 'github-dark'
   })
 
@@ -63,10 +84,10 @@ async function CodeBlock() {
     jsx,
     jsxs,
     components: {
-      // 自定义 `pre` 元素
+      // your custom `pre` element
       pre: props => <pre data-custom-codeblock {...props} />
     },
-  })
+  }) as JSX.Element
 }
 ```
 
@@ -78,15 +99,16 @@ async function CodeBlock() {
 创建 `shared.ts` 文件，用于高亮器：
 
 ```ts
+import type { JSX } from 'react'
+import type { BundledLanguage } from 'shiki/bundle/web'
 import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 import { Fragment } from 'react'
-// @ts-expect-error -- untyped
 import { jsx, jsxs } from 'react/jsx-runtime'
 import { codeToHast } from 'shiki/bundle/web'
 
-export async function highlight(code: string) {
+export async function highlight(code: string, lang: BundledLanguage) {
   const out = await codeToHast(code, {
-    lang: 'ts',
+    lang,
     theme: 'github-dark'
   })
 
@@ -94,7 +116,7 @@ export async function highlight(code: string) {
     Fragment,
     jsx,
     jsxs,
-  })
+  }) as JSX.Element
 }
 ```
 
@@ -102,14 +124,14 @@ export async function highlight(code: string) {
 
 ```tsx
 'use client'
-import { useLayoutEffect, useState } from 'react'
+import { JSX, useLayoutEffect, useState } from 'react'
 import { highlight } from './shared'
 
 export function CodeBlock({ initial }: { initial?: JSX.Element }) {
   const [nodes, setNodes] = useState(initial)
 
   useLayoutEffect(() => {
-    void highlight('console.log("Rendered on client")').then(setNodes)
+    void highlight('console.log("Rendered on client")', 'ts').then(setNodes)
   }, [])
 
   return nodes ?? <p>Loading...</p>
@@ -125,10 +147,10 @@ import { CodeBlock } from './codeblock'
 import { highlight } from './shared'
 
 export default async function Page() {
-  // `initial` 是可选的。
+  // `initial` is optional.
   return (
     <main>
-      <CodeBlock initial={await highlight('console.log("Rendered on server")')} />
+      <CodeBlock initial={await highlight('console.log("Rendered on server")', 'ts')} />
     </main>
   )
 }

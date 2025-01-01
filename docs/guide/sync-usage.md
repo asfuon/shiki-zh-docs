@@ -19,7 +19,7 @@ const shiki = createHighlighterCoreSync({
 const html = shiki.highlight('console.log(1)', { lang: 'js', theme: 'nord' })
 ```
 
-在这样做时，要求所有的 `themes` 和 `langs` 作为普通对象提供。此外，还需要显式提供 `engine`。通过新的[实验性 JavaScript 正则表达式引擎](/guide/regex-engines#javascript-regexp-engine-experimental)，您也可以同步创建引擎实例。
+在这样做时，要求所有的 `themes` 和 `langs` 作为普通对象提供。此外，还需要显式提供 `engine`。通过新的[JavaScript 正则表达式引擎](/guide/regex-engines#javascript-regexp-engine-experimental)，您也可以同步创建引擎实例。
 
 [Oniguruma 引擎](/guide/regex-engines#oniguruma-engine)只能异步创建，因此您需要在创建同步高亮器之前解析引擎的 Promise。
 

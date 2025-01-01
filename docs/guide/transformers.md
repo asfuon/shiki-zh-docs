@@ -28,7 +28,7 @@ const code = await codeToHtml('foo\bar', {
 })
 ```
 
-我们也提供了一些常用的转换器供你使用，查看 [`shiki-transforms`](/packages/transformers) 和 [`@shikijs/colorized-brackets](/packages/colorized-brackets) 了解更多。
+我们也提供了一些常用的转换器供你使用，查看 [`shiki-transformers`](/packages/transformers) 和 [`@shikijs/colorized-brackets](/packages/colorized-brackets) 了解更多。
 
 ## 转换器钩子
 
