@@ -5,10 +5,10 @@
 在某些极端情况下，如果您需要完全同步地运行 Shiki，从 v1.16 开始，我们提供了核心 API 的同步版本。您可以使用 `createHighlighterCoreSync` 同步地创建一个高亮器实例。
 
 ```ts
+import js from '@shikijs/langs/javascript'
+import nord from '@shikijs/themes/nord'
 import { createHighlighterCoreSync } from 'shiki/core'
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript'
-import js from 'shiki/langs/javascript.mjs'
-import nord from 'shiki/themes/nord.mjs'
 
 const shiki = createHighlighterCoreSync({
   themes: [nord],
@@ -24,10 +24,10 @@ const html = shiki.highlight('console.log(1)', { lang: 'js', theme: 'nord' })
 [Oniguruma 引擎](/guide/regex-engines#oniguruma-engine)只能异步创建，因此您需要在创建同步高亮器之前解析引擎的 Promise。
 
 ```ts
+import js from '@shikijs/langs/javascript'
+import nord from '@shikijs/themes/nord'
 import { createHighlighterCoreSync } from 'shiki/core'
 import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
-import js from 'shiki/langs/javascript.mjs'
-import nord from 'shiki/themes/nord.mjs'
 
 // 在之前某个地方加载
 const engine = await createOnigurumaEngine(import('shiki/wasm'))

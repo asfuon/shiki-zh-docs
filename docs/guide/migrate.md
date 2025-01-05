@@ -26,7 +26,7 @@ Shiki 的 v1.0 版本是一次重大的重写，我们借此机会修改了过�
 `shiki` 包中包含的破坏性改动，而 [兼容构建 `@shikijs/compat`](/guide/compat#compatibility-build) 中不具备（屏蔽）:
 
 - 顶级命名导出项 `setCDN`、`loadLanguage`、`loadTheme` 和 `setWasm` 被移除。
-- `BUNDLED_LANGUAGES`、`BUNDLED_THEMES` 被移至 `shikiji/langs` 和 `shikiji/themes` 中并分别更名为 `bundledLanguages` 和 `bundledThemes`。
+- `BUNDLED_LANGUAGES`、`BUNDLED_THEMES` 被移至 `@shikijs/langs` 和 `@shikijs/themes` 中并分别更名为 `bundledLanguages` 和 `bundledThemes`。
 - `createHighlighter` 的 `theme` 选项被移除，请改用数组形式的 `themes`。
 - 高亮器不再具有内部的默认主题上下文。对于 `codeToHtml` 和 `codeToThemedTokens` 函数，`theme` 选项是必须的。
 - `codeToThemedTokens` 更名为 `codeToTokensBase`，并添加了一个更高级的 `codeToTokens`。

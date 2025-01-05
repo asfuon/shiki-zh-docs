@@ -233,7 +233,7 @@ async function main() {
 </body>
 ```
 
-这非常高效，因为它只会按需加载语言和主题。对于上面的代码片段，只会发出四个请求（`shiki`、`shiki/themes/vitesse-light.mjs`、`shiki/langs/javascript.mjs` 和 `shiki/wasm.mjs`），共计传输约 200KB 的数据。
+这非常高效，因为它只会按需加载语言和主题。对于上面的代码片段，只会发出四个请求（`shiki`、`@shikijs/themes/vitesse-light`、`@shikijs/langs/javascript` 和 `shiki/wasm.mjs`），共计传输约 200KB 的数据。
 
 [查看示例](https://jsfiddle.net/t7brz23v/)
 
@@ -245,9 +245,9 @@ Cloudflare Workers [不支持从二进制数据初始化 WebAssembly](https://co
 
 ```ts twoslash theme:nord
 // @noErrors
+import js from '@shikijs/langs/javascript'
+import nord from '@shikijs/themes/nord'
 import { createHighlighterCore, loadWasm } from 'shiki/core'
-import nord from 'shiki/themes/nord.mjs'
-import js from 'shiki/langs/javascript.mjs'
 
 // 将 WASM 作为资产导入
 await loadWasm(import('shiki/onig.wasm'))

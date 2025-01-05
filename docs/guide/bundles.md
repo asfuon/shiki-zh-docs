@@ -44,6 +44,9 @@ const highlighter = await createHighlighter({
 
 ```ts twoslash theme:material-theme-ocean
 // @noErrors
+// directly import the theme and language modules, only the ones you imported will be bundled.
+import nord from '@shikijs/themes/nord'
+
 // `shiki/core` 不包含任何主题、语言和 WASM 二进制文件
 import { createHighlighterCore } from 'shiki/core'
 import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
@@ -59,12 +62,12 @@ const highlighter = await createHighlighterCore({
     // 传入导入的包，而不是字符串
     nord,
     // 如果你需要进行块分割（chunk splitting），请使用动态导入
-    import('shiki/themes/material-theme-ocean.mjs')
+    import('@shikijs/themes/material-theme-ocean')
   ],
   langs: [
-    import('shiki/langs/javascript.mjs'),
+    import('@shikijs/langs/javascript'),
     // shiki 会尝试使用模块的默认导出
-    () => import('shiki/langs/css.mjs'),
+    () => import('@shikijs/langs/css'),
     // 或者一个返回自定义语法的 getter
     async () => JSON.parse(await fs.readFile('my-grammar.json', 'utf-8'))
   ],
@@ -73,7 +76,7 @@ const highlighter = await createHighlighterCore({
 })
 
 // 可选的，在创建后加载主题和语言
-await highlighter.loadTheme(import('shiki/themes/vitesse-light.mjs'))
+await highlighter.loadTheme(import('@shikijs/themes/vitesse-light'))
 
 const code = highlighter.codeToHtml('const a = 1', {
   lang: 'javascript',
